@@ -1,0 +1,49 @@
+.navbar.bg-clor {
+    background-color: rgba(196, 74, 74, 0.74); /* C44A4A à 74% en notation RGBA */
+    margin: 0;
+
+    padding: 0;
+
+    height: 100%;
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* 100% de la hauteur de la vue (viewport height) */
+    margin: 0;
+    background-image: url('images/image_Accueil.jpg'); /* Remplacez 'chemin/vers/votre/image.jpg' par le chemin de votre image */
+    background-size: cover; /* Ajuste la taille de l'image pour couvrir tout l'arrière-plan */
+    background-position: center; /* Centre l'image sur l'arrière-plan */
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */  
+    margin-top: 0; /* Supprime la marge supérieure pour coller l'image à la barre de navigation */
+     
+}
+  
+.content {
+    flex: 1; /* Utilise tout l'espace disponible en dessous du pied de page */
+    margin: 0; /* Supprimer la marge par défaut du contenu */
+       
+}
+
+
+#footer {
+    background-color: #735151;
+    color: white; /* Définissez la couleur du texte pour le pied de page */
+    padding: 15px; /* Ajoutez de l'espace autour du pied de page */
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+  
+#footer h4 {
+    margin: 0; /* Supprimer les marges par défaut du h4 */
+  }
