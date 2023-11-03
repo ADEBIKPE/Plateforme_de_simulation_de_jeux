@@ -32,11 +32,20 @@ include 'menu.inc.php';
         }*/
         ?>
         <h1>Accueil</h1>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto magni eius, accusamus nesciunt illum voluptas
-            ut doloremque hic at excepturi tempore harum commodi incidunt? Doloremque alias, dicta ex voluptas nemo quas
-            exercitationem eum illum minus rem! Ut repudiandae illum, deserunt cupiditate dignissimos quod quae modi
-            mollitia, ipsa eligendi placeat iure, optio enim accusamus voluptate. Facere eaque error numquam illum unde?
-        </p>
+        <div class="welcome-content">
+          <h2 id="welcome">WELCOME <br> GAMER(S)</h2>
+          <p id="welcome-paragraph">Bienvenue sur notre site consacré aux jeux de plateau,
+             un lieu dédié aux amateurs de jeux de société et de stratégie. 
+             Ici, nous vous convions à découvrir un univers où l'ingéniosité se marie
+              harmonieusement à la compétence pour offrir des moments
+               de divertissement mémorables.
+                Que vous soyez un débutant curieux d'explorer de nouveaux horizons ludiques ou
+                 un expert en quête de nouveaux défis, notre vaste collection de jeux de plateau saura satisfaire tous les appétits ludiques. 
+                 Rejoignez une communauté passionnée, partagez des aventures épiques avec vos amis et mettez vos facultés de réflexion à l'épreuve grâce à notre sélection captivante de jeux. 
+                 L'aventure vous attend !
+
+          </p>
+        </div>
 
     </div>
 

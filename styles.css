@@ -34,6 +34,54 @@ body {
        
 }
 
+.navbar-nav .nav-link {
+    font-weight: bold;
+}
+
+.welcome-content {
+    display: flex;
+    flex-direction: column; /* Aligner verticalement les éléments enfants */
+    align-items: flex-end; /* Aligner les éléments à droite */
+    padding: 20px; /* Ajoutez de l'espace autour du contenu */
+}
+
+#welcome {
+    color: rgba(255, 228, 196, 0.758);
+    margin: 0; /* Supprimer les marges par défaut de h1 */
+}
+
+#welcome-paragraph {
+    color: rgba(34, 30, 24, 0.758);
+    margin: 0; /* Supprimer les marges par défaut du paragraphe */
+    text-align: left; /* Aligner le texte à gauche à l'intérieur du paragraphe */
+    font-weight: bold; /* Rendre le texte en gras */
+}
+
+
+.custom-button {
+    background-color: rgba(196, 74, 74, 0.74); /* Couleur d'arrière-plan avec une opacité de 74% */
+    border: none;
+    border-radius: 10px;
+    color: rgb(9, 8, 8);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); /* Effet d'ombre */
+    padding: 10px 20px;
+}
+
+.custom-button:hover {
+    background-color: rgba(196, 74, 74, 0.9); /* Couleur au survol avec une opacité de 90% */
+}
+
+.forgot-password-link {
+    text-decoration: underline; /* Soulignez le texte du lien */
+    color: #007bff; /* Couleur du lien (bleu par défaut) */
+    font-weight: normal; /* Réinitialiser le poids de la police si nécessaire */
+}
+
+.forgot-password-link:hover {
+    text-decoration: none; /* Supprimez le soulignement au survol du lien */
+    font-weight: bold; /* Ajoutez du gras au texte au survol */
+}
+
 
 #footer {
     background-color: #735151;
@@ -43,7 +91,10 @@ body {
     justify-content: center;
     align-items: center;  
 }
+
   
 #footer h4 {
     margin: 0; /* Supprimer les marges par défaut du h4 */
   }
+
+  
