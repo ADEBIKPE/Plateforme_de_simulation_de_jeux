@@ -36,7 +36,7 @@ include 'menu.inc.php';
           echo '<tr>';
           echo '<th scope="row">' . $row['ID'] . '</th>';
           echo '<td>' . $row['NOM'] . '</td>';
-          echo '<td><img src="images/' . $row['FILE'] . '" width="100px" height="100px"></td>';
+          echo '<td><img src="images/' . $row['FILE'] . '" width="100px" height="100px" alt="' . $row['NOM'] . '"></td>';
           echo '</tr>';
 
         }
