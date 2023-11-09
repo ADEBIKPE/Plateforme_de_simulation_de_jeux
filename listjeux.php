@@ -25,7 +25,7 @@ include 'menu.inc.php';
         <?php
 
         // Connexion :
-        require_once("connpdo.php");
+        require_once("param.inc.php");
         $req = "SELECT * FROM jeux";
         $ps = $pdo->prepare($req);
         $ps->execute();

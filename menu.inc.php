@@ -1,67 +1,39 @@
-<nav class="navbar navbar-expand-md bg-clor border-bottom border-body">
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Page Title</title>
+  <link rel="stylesheet" href="style_menus.css">
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <script src='main.js'></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg " >
   <div class="container-fluid">
-    <h1 class="navbar-brand" href="#">ESIG' GAME</h1>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="#">PGA</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto mb-lg-0">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
+          <a class="nav-link active lien" aria-current="page" aria-expanded="false" href="index.php">Accueil</a>
         </li>
         <li class="nav-item">
-          <!-- <a class="nav-link" href="page.php">Une page</a> -->
+          <a class="nav-link active lien" href="list.php" aria-disabled="false">Mes Jeux</a>
         </li>
-
-        <?php
-
-        if ((isset($_SESSION['PROFILE']))) {
-          $nom = $_SESSION['PROFILE']['nom'];
-          echo '<li class="nav-item">';
-          echo '<a class="nav-link" href="chez.php">Chez ' . $nom . '</a>';
-          echo '</li>';
-        }
-        ?>
-
-
+        <li class="nav-item">
+          <a class="nav-link active lien" href="listeJeux.php" aria-disabled="false">Historique</a>
+        </li>  
       </ul>
-
-      <?php
-      if (!(isset($_SESSION['PROFILE']))) {
-
-
-        echo ' <ul class="navbar-nav mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link"  href="inscription.php">Sign in</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="connexion.php">Sign up</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="infos.php">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="infos.php">Contact us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="infos.php">Help</a>
-        </li>
-
-      </ul>';
-      } else {
-
-        echo ' <ul class="navbar-nav mb-lg-0">
-       <li class="nav-item">
-         <a class="nav-link" href="logout.php">Logout</a>
-       </li>
-
-     </ul>';
-
-      }
-
-
-      ?>
+      
+      
+      <form class="d-flex" role="search">
+        <button class="btn deco" type="submit">Déconnexion</button>
+      </form>
     </div>
   </div>
 </nav>
+</body>
+</html>

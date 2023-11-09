@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'Kenia'; 
+    src: url('Police/Kenia-Regular.ttf') format('truetype'); 
+
+  }
+    
+  @font-face {
+    font-family: 'Dancing'; 
+    src: url('Police/Cardo-Regular.ttf') format('truetype'); 
+
+  }
+  
+  nav {
+    background-color: #e0e0e0; 
+    padding: 10px;
+  }
+
+ 
+  nav a {
+    color: white; 
+    text-decoration: none; 
+    margin: 0 10px; 
+  }
+
+  .navbar-brand{
+    font-family: 'Kenia', sans-serif;
+    font-size: 50px;
+  }
+
+  .lien{
+    font-family: 'Dancing', sans-serif;
+    
+  }
+  .deco{
+    font-family: 'Dancing', sans-serif;
+    background-color: #333;
+    color: white;
+  }
+  

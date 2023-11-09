@@ -2,7 +2,7 @@
 session_start();
 $titre = "Ajout Jeux";
 include 'header.inc.php';
-include 'menu.inc.php';
+include 'menuadmin.php';
 ?>
 <div class="content">
 
@@ -14,12 +14,12 @@ include 'menu.inc.php';
 
 
                     <div class="col-md-4">
-                        <label for="nomjeux" class="form-label">Nom de jeux</label>
+                        <label for="nomjeux" class="form-label">Nom de jeu</label>
                         <input type="text" class="form-control " id="nomjeux" name="nomjeux"
                             placeholder="Nom du jeux..." required>
                     </div>
                     <div class="col-md-4">
-                        <label for="Categorie" class="form-label">Categorie</label>
+                        <label for="Categorie" class="form-label">Catégorie</label>
                         <input type="text" class="form-control " id="categorie" name="categorie"
                             placeholder="Categorie..." required>
                     </div>
@@ -31,14 +31,14 @@ include 'menu.inc.php';
 
                 </div>
                 <div class="row my-3">
-                    <div class="col-md-6">
-                        <label class="form-label">Ajout d'une photo </label>
-                        <input type="file" name="userfile" class="form-control" />
+                    <div class="col-md-4">
+                        <label class="form-label">Ajout d'une image</label>
+                        <input type="file" name="image" class="form-control" />
 
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label class="form-label">Ajout des règles (PDF) </label>
-                        <input type="file" name="userfile" class="form-control" />
+                        <input type="file" name="regles" class="form-control" />
 
                     </div>
                 </div>
