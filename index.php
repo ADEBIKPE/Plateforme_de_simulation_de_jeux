@@ -2,7 +2,7 @@
 session_start();
 $titre = "Accueil";
 include 'header.inc.php';
-include 'menu.inc.php';
+include 'menu_membre.php';
 
 
 ?>
