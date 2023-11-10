@@ -31,7 +31,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link active lien" href="list.php" aria-disabled="false">Membres</a>
+          <a class="nav-link active lien" href="listeMembres" aria-disabled="false">Membres</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active lien" href="listeJeux.php" aria-disabled="false">Jeux</a>
