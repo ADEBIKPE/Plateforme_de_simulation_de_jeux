@@ -40,7 +40,7 @@
                 if($row["role"]==2)
                 {
                 $_SESSION['message'] = "Authentification réussi pour un membre.";
-                header('Location: chez.php');
+                header('Location: accueil.php');
               }          
             
               }else { 

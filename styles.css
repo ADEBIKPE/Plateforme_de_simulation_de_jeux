@@ -20,12 +20,7 @@ body {
     flex-direction: column;
     min-height: 100vh; /* 100% de la hauteur de la vue (viewport height) */
     margin: 0;
-    background-image: url('images/image_Accueil.jpg'); /* Remplacez 'chemin/vers/votre/image.jpg' par le chemin de votre image */
-    background-size: cover; /* Ajuste la taille de l'image pour couvrir tout l'arrière-plan */
-    background-position: center; /* Centre l'image sur l'arrière-plan */
-    background-repeat: no-repeat; /* Empêche la répétition de l'image */  
-    margin-top: 0; /* Supprime la marge supérieure pour coller l'image à la barre de navigation */
-     
+   
 }
 
   

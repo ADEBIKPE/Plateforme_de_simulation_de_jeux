@@ -1,7 +1,7 @@
 <?php
 //require_once("roleadmin.php");
 session_start();
-$titre = "Administratuer";
+$titre = "Administrateur";
 include 'header.inc.php';
 include 'menu_admin.php';
 ?>

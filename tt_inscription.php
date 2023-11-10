@@ -43,5 +43,5 @@ if ($stmt = $mysqli->prepare("INSERT INTO user(nom, prenom, email, passwd, date_
 }
 
 // Redirection vers la page d'accueil par exemple :
-header('Location: index.php');
+header('Location: connexion.php');
 ?>

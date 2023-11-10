@@ -2,7 +2,7 @@
 session_start();
 $titre = "Inscription";
 include 'header.inc.php';
-include 'menu_membre.php';
+include 'menu_visiteur.php';
 ?>
 <div class="content">
     <div class="container">
@@ -50,7 +50,8 @@ include 'menu_membre.php';
 
                 <div class="row my-3">
                     <div class="col-md-12 d-flex justify-content-end">
-                        <button class="btn custom-button" type="submit">S'inscrire</button>
+                        <button class="btn custom-button" style=" background-color:  #333; color: white;" type="submit">S'inscrire</button>
+                        
                     </div>
                 </div>
 

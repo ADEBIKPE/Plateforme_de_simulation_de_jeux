@@ -1,9 +1,10 @@
 <?php
 session_start();
-$titre = "Connexion";
+ $titre = "Connexion";
 include 'header.inc.php';
 include 'menu_visiteur.php';
 ?>
+
 <div class="content">
     <div class="container">
         <h1>Connexion</h1>
@@ -21,32 +22,26 @@ include 'menu_visiteur.php';
         }
         ?>
         <form method="POST" action="tt_connexion.php">
-            <div class="container">
-                <div class="row my-3">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control rounded-pill shadow" id="email" name="email"
-                                placeholder="Votre email..." required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="password" class="form-label">Mot de passe</label>
-                            <input type="password" class="form-control rounded-pill shadow" id="password"
-                                name="password" placeholder="Votre mot de passe..." required>
-                        </div>
-                    </div>
-                    <div class="row my-3">
-                        
-                        <div class="col-md-12 d-flex justify-content-end align-items-baseline">
-                            <a href="#" class="forgot-password-link">Mot de passe oublié </a>
-                            <button class="btn custom-button ms-3" type="submit">Connexion</button>
-                        </div>
-                    </div>
-
-                </div>
-
+            <div class="mb-3 col-lg-5">
+                <label for="exampleInputEmail1" class="form-label">Adresse mail</label>
+                <input name = "email"type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                
             </div>
+            <div class="mb-3 col-lg-5">
+                <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+                <input name =" password" type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+           
+            <button class="btn custom-button"  style=" background-color:  #333; color: white;" type="submit" >Connexion</button>
         </form>
+        <div class="row my-3">
+                        
+                        <div class="col-md-4 d-flex justify-content-end align-items-baseline">
+                            <p >Vous n'avez pas encore de compte? <a href="inscription.php" class="mb-3 forgot-password-link">S'inscrire</a> </p>
+                           
+                        </div>
+                    </div>
+
     </div>
 </div>
 <?php
