@@ -1,56 +1,51 @@
-<?php
-session_start();
-$titre = "Accueil";
-include 'header.inc.php';
-include 'menu_visiteur.php';
+<!DOCTYPE html>
+<html>
+    <?php
+    session_start();
+    $titre = "Accueil";
+    include 'header.inc.php';
+    include 'menu_visiteur.php';
 
+    ?>
+    <body id= "inde">
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <!-- Votre carrousel ici -->
+                        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="images/Azul.jpg" style="height: 450px; object-fit: cover;" class="d-block w-100" alt="Image 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="" style="height: 450px; object-fit: cover;" class="d-block w-100" alt="Image 2">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="" style="height: 450px; object-fit: cover;" class="d-block w-100" alt="Image 3">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="" style="height: 450px; object-fit: cover;" class="d-block w-100" alt="Image 4">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-?>
+                    <!-- Ajoutez d'autres colonnes si nécessaire -->
+                    <div class="col-lg-2">
+                        
+                    </div>
+                    <div class="col-lg-6">
+                        <p  class= "ta" >Bienvenue sur <span style="color: coral;">Plateau Game Arena</span> !<br><br>
+                       </p>
+                       <div class= "ba" >La plateforme en ligne de <span style="color: coral;">jeux de plateau</span>.<br><br></div>
 
-<div class="content">
-
-
-
-    <div class="container">
-
-
+                       <button class="btn mon_bouton "  style=" background-color:coral; color: white;" onclick="window.location.href='connexion.php'" type="submit" ><div class="ca">Commencez à jouer maintenant</div></button>
+                    </div>
+                    
+                </div>
+            </div>
         <?php
-        if (isset($_SESSION['message'])) {
-            echo '<div class="alert alert-primary alert-dismissible fade show" role="alert">';
-            echo $_SESSION['message'];
-            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
-            echo '</div>';
-            unset($_SESSION['message']);
-        }
-        /*
-        if(isset($_SESSION['erreur'])) {
-            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
-            echo $_SESSION['erreur'];
-            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
-            echo '</div>';
-            unset($_SESSION['erreur']);
-        }*/
+        //include 'footer.inc.php';
         ?>
-        <h1>Accueil</h1>
-        <div class="welcome-content">
-          <h2 id="welcome">WELCOME <br> GAMER(S)</h2>
-          <p id="welcome-paragraph"  style="color:#EDE6DE;">Bienvenue sur notre site consacré aux jeux de plateau,
-             un lieu dédié aux amateurs de jeux de société et de stratégie. 
-             Ici, nous vous convions à découvrir un univers où l'ingéniosité se marie
-              harmonieusement à la compétence pour offrir des moments
-               de divertissement mémorables.
-                Que vous soyez un débutant curieux d'explorer de nouveaux horizons ludiques ou
-                 un expert en quête de nouveaux défis, notre vaste collection de jeux de plateau saura satisfaire tous les appétits ludiques. 
-                 Rejoignez une communauté passionnée, partagez des aventures épiques avec vos amis et mettez vos facultés de réflexion à l'épreuve grâce à notre sélection captivante de jeux. 
-                 L'aventure vous attend !
-
-          </p>
-        </div>
-
-    </div>
-
-    <!-- Le contenu de la page ici -->
-</div>
-<?php
-include 'footer.inc.php';
-?>
+    </body>
+</html>

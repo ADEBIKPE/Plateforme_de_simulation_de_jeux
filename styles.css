@@ -1,3 +1,20 @@
+/*Création des polices*/
+@font-face {
+    font-family: 'Kenia'; 
+    src: url('Police/Kenia-Regular.ttf') format('truetype'); 
+
+  }
+    
+  @font-face {
+    font-family: 'Dancing'; 
+    src: url('Police/Cardo-Regular.ttf') format('truetype'); 
+
+  }
+  
+
+
+  /*Autres styles*/
+
 .navbar.bg-color {
     background-color: rgba(196, 74, 74, 0.74); /* C44A4A à 74% en notation RGBA */
     margin: 0;
@@ -124,4 +141,61 @@ body {
   
 
 
+  /*Style pour les menus*/
+  .menu_de_navigation nav {
+    background-color: #e0e0e0; 
+    padding: 10px;
+  }
+
+ 
+  .menu_de_navigation nav a {
+    color: white; 
+    text-decoration: none; 
+    margin: 0 10px; 
+  }
+
+  .menu_de_navigation .navbar .navbar-brand{
+    font-family: 'Kenia', sans-serif;
+    font-size: 50px;
+    color:black;
+  }
+
+  .menu_de_navigation .lien{
+    font-family: 'Dancing', sans-serif;
+    color:#333;
+    
+  }
+  .menu_de_navigation .deco{
+    font-family: 'Dancing', sans-serif;
+    background-color: #333;
+    color: white;
+    
+  }
+
+
+  /*Style pour la page index*/
+  #inde .ta{
+    /* Vos styles ici */
+    font-family: 'Dancing', sans-serif;
+    font-size: 40px;
+    font-style: italic;
+  }   
+  
+  #inde .ba{
+    font-family: 'Bodoni MTsplay', sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+  }
+
+  #inde .mon_bouton {
+    width: 500px; /* Changer la largeur selon vos besoins */
+    height: 50px; /* Changer la hauteur selon vos besoins */
+    font-size: 16px; /* Changer la taille de la police selon vos besoins */
+    /* Autres styles CSS si nécessaire */
+}
+#inde .ca{
+    font-family: 'Bodoni MTsplay', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+  }
   

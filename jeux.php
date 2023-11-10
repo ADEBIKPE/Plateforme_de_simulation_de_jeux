@@ -1,6 +1,5 @@
 <?php
 require_once("roleadmin.php");
-session_start();
 $titre = "Ajout Jeux";
 include 'header.inc.php';
 include 'menu_admin.php';
@@ -45,7 +44,7 @@ include 'menu_admin.php';
                 </div>
                 <div class="row my-3">
                     <div class="col-md-12 d-flex justify-content-end">
-                        <button class="btn custom-button" type="submit">Ajouter</button>
+                        <button class="btn custom-button" style=" background-color:  #333; color: white;" type="submit">Ajouter</button>
                     </div>
                 </div>
             </div>

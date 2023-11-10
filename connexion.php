@@ -36,8 +36,8 @@ include 'menu_visiteur.php';
         </form>
         <div class="row my-3">
                         
-                        <div class="col-md-4 d-flex justify-content-end align-items-baseline">
-                            <p >Vous n'avez pas encore de compte? <a href="inscription.php" class="mb-3 forgot-password-link">S'inscrire</a> </p>
+                        <div class="col-md-4 ">
+                            <p >Vous n'avez pas encore de compte? <a href="inscription.php" class="mb-3 forgot-password-link">Inscrivez-vous</a> </p>
                            
                         </div>
                     </div>
