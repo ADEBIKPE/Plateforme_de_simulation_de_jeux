@@ -15,16 +15,16 @@
                         <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="images/Azul.jpg" style="height: 450px; object-fit: cover;" class="d-block w-100" alt="Image 1">
+                                    <img src="images/Azul.jpg" style="height: 450px; object-fit: cover;"  alt="Image 1">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="" style="height: 450px; object-fit: cover;" class="d-block w-100" alt="Image 2">
+                                    <img src="images/uno.jpg" style="height: 450px; object-fit: cover;" alt="Image 2">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="" style="height: 450px; object-fit: cover;" class="d-block w-100" alt="Image 3">
+                                    <img src="images/Clank.jpg" style="height: 450px; object-fit: cover;" class="d-block w-100" alt="Image 3">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="" style="height: 450px; object-fit: cover;" class="d-block w-100" alt="Image 4">
+                                    <img src="images/THE LOOP.jpg" style="height: 450px; object-fit: cover;" class="d-block w-100" alt="Image 4">
                                 </div>
                             </div>
                         </div>
