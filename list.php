@@ -51,7 +51,7 @@ include 'menuadmin.php';
             echo '<td>' . $row['prenom'] . '</td>';
             echo '<td>' . $row['email'] . '</td>';
             echo '<td>' . $row['role'] . '</td>';
-            echo '<td><a href="delete.php?email=' . $row['email'] . '" >Supprimer</a></td>';
+            echo '<td><a href="delete.php?email=' . $row['email'] . '" class="btn btn-danger">Supprimer</a></td>';
             echo '</tr>';
             $i++;
           }

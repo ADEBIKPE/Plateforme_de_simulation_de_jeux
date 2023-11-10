@@ -30,7 +30,7 @@
       
       
       <form class="d-flex" role="search">
-        <button class="btn deco" type="submit">Déconnexion</button>
+        <button class="btn deco" onclick="window.location.href='logout.php'">Déconnexion</button>
       </form>
     </div>
   </div>

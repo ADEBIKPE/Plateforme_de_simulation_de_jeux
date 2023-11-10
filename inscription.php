@@ -2,7 +2,7 @@
 session_start();
 $titre = "Inscription";
 include 'header.inc.php';
-include 'menu.inc.php';
+include 'menu_membre.php';
 ?>
 <div class="content">
     <div class="container">

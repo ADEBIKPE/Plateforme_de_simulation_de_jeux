@@ -26,7 +26,7 @@
     if($result->num_rows > 0) 
     {     
         $row = $result->fetch_assoc(); 
-            if (password_verify($password,$row["password"])) 
+            if (password_verify($password,$row["passwd"])) 
             {
                   // Redirection vers la page admin.php ou autres pages en fonction du role (tuteur,admin, etc.);
                   $_SESSION['PROFILE']=$row;
@@ -39,8 +39,8 @@
                 }
                 if($row["role"]==2)
                 {
-                $_SESSION['message'] = "Authentification réussi pour un tuteur.";
-                header('Location: index.php');
+                $_SESSION['message'] = "Authentification réussi pour un membre.";
+                header('Location: chez.php');
               }          
             
               }else { 

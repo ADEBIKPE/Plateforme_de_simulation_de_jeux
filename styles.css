@@ -46,6 +46,30 @@ body {
     padding: 20px; /* Ajoutez de l'espace autour du contenu */
 }
 
+.bold-text {
+    font-weight: bold;
+    font-size: 40px;
+    color: rgba(255, 228, 196, 0.758);
+}
+
+.bold-text-small {
+    font-weight: bold;
+    font-size: 20px; 
+    color: rgba(255, 228, 196, 0.758);
+}
+
+
+.red-button.custom {
+    background-color: #ff0000;
+    color: #ffffff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
 #welcome {
     color: rgba(255, 228, 196, 0.758);
     margin: 0; /* Supprimer les marges par défaut de h1 */

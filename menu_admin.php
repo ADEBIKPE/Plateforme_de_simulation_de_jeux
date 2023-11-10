@@ -38,7 +38,7 @@
         </li>  
       </ul>
       <form class="d-flex" role="search">
-        <button class="btn deco" type="submit">Déconnexion</button>
+        <button class="btn deco" href="logout.php" type="submit">Déconnexion</button>
       </form>
     </div>
   </div>

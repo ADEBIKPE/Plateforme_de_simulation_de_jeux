@@ -2,7 +2,7 @@
 session_start();
 $titre = "Connexion";
 include 'header.inc.php';
-include 'menu.inc.php';
+include 'menu_visiteur.php';
 ?>
 <div class="content">
     <div class="container">
@@ -39,7 +39,7 @@ include 'menu.inc.php';
                         
                         <div class="col-md-12 d-flex justify-content-end align-items-baseline">
                             <a href="#" class="forgot-password-link">Mot de passe oublié </a>
-                            <button class="btn custom-button ms-3" type="submit">Sign up</button>
+                            <button class="btn custom-button ms-3" type="submit">Connexion</button>
                         </div>
                     </div>
 
