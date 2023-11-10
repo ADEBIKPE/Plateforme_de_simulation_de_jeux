@@ -1,4 +1,5 @@
 <?php
+require_once("roleadmin.php");
 $email=$_GET['email'];
 // Connexion :
 require_once("param.inc.php");

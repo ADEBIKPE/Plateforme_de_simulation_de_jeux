@@ -1,11 +1,11 @@
 <?php
-//require_once("roleadmin.php");    
+require_once("roleadmin.php");    
 
 
 
 $titre = "Liste Utilisateur";
 include 'header.inc.php';
-include 'menuadmin.php';
+include 'menu_admin.php';
 
 ?>
 <div class="content">

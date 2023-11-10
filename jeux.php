@@ -1,8 +1,9 @@
 <?php
+require_once("roleadmin.php");
 session_start();
 $titre = "Ajout Jeux";
 include 'header.inc.php';
-include 'menuadmin.php';
+include 'menu_admin.php';
 ?>
 <div class="content">
 
