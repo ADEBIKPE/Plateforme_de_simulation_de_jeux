@@ -50,7 +50,7 @@ include 'menu.inc.php';
 
                 <div class="row my-3">
                     <div class="col-md-12 d-flex justify-content-end">
-                        <button class="btn custom-button" type="submit">Sign in</button>
+                        <button class="btn custom-button" type="submit">S'inscrire</button>
                     </div>
                 </div>
 

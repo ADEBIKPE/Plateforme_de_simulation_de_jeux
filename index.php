@@ -34,7 +34,7 @@ include 'menu.inc.php';
         <h1>Accueil</h1>
         <div class="welcome-content">
           <h2 id="welcome">WELCOME <br> GAMER(S)</h2>
-          <p id="welcome-paragraph">Bienvenue sur notre site consacré aux jeux de plateau,
+          <p id="welcome-paragraph"  style="color:#EDE6DE;">Bienvenue sur notre site consacré aux jeux de plateau,
              un lieu dédié aux amateurs de jeux de société et de stratégie. 
              Ici, nous vous convions à découvrir un univers où l'ingéniosité se marie
               harmonieusement à la compétence pour offrir des moments
