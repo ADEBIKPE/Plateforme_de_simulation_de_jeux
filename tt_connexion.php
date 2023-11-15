@@ -1,5 +1,5 @@
 <?php
-  session_start(); // Pour les massages
+  session_start(); // Pour les messages
   
  
   

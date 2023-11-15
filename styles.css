@@ -146,6 +146,9 @@ body {
     background-color: #e0e0e0; 
     padding: 10px;
   }
+  .menu_de_navigation{
+    position: static;
+  }
 
  
   .menu_de_navigation nav a {
@@ -156,7 +159,7 @@ body {
 
   .menu_de_navigation .navbar .navbar-brand{
     font-family: 'Kenia', sans-serif;
-    font-size: 50px;
+    font-size: 30px;
     color:black;
   }
 
@@ -174,6 +177,7 @@ body {
 
 
   /*Style pour la page index*/
+  
   #inde .ta{
     /* Vos styles ici */
     font-family: 'Dancing', sans-serif;
@@ -182,8 +186,8 @@ body {
   }   
   
   #inde .ba{
-    font-family: 'Bodoni MTsplay', sans-serif;
-    font-size: 50px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 45px;
     font-weight: bold;
   }
 
@@ -198,42 +202,54 @@ body {
     font-size: 20px;
     font-weight: bold;
   }
+  #inde #bas_inde{
+    background-color:#e0e0e0;
+    border-radius: 20px;
+    padding: 50px; 
+  }
+
+
+
+
+
+
+
   
   /*Styles pour la page accueil_membre__________________*/
-  #container_membre {
+  #accueil #container_membre {
     margin: 0;
     padding: 0;
   }
   
   /* Styles pour le conteneur du carrousel */
-  #imageCarousel {
+  #accueil #imageCarousel {
       margin-top: 0px;
     }
     
     /* Styles pour les images du carrousel */
-    #imageCarousel .carousel-inner img {
+    #accueil #imageCarousel .carousel-inner img {
       width: 474px;
       height: 315px;
       margin: 0;
     }
     
   /* Styles par défaut pour les flèches de contrôle du carrousel */
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
+  #accueil .carousel-control-prev-icon,
+  #accueil .carousel-control-next-icon {
   background-color: transparent; /* Rend le fond transparent */
   border: none; /* Supprime la bordure */
   
 }
 
 /* Masque les flèches du carrousel par défaut */
-#imageCarousel .carousel-control-prev,
-#imageCarousel .carousel-control-next {
+#accueil #imageCarousel .carousel-control-prev,
+#accueil #imageCarousel .carousel-control-next {
   opacity: 0;
   transition: opacity 0.1s; /* Ajoute une transition en douceur */
 }
    /* Styles pour les flèches de contrôle du carrousel */
-  #imageCarousel:hover .carousel-control-prev-icon,
-  #imageCarousel:hover .carousel-control-next-icon {
+   #accueil #imageCarousel:hover .carousel-control-prev-icon,
+   #accueil #imageCarousel:hover .carousel-control-next-icon {
     background-color: #544848; /* Couleur de fond des flèches */
     color: #fff; /* Couleur du texte des flèches */
     width: 10px; /* Largeur de la flèche */
@@ -243,24 +259,24 @@ body {
   }
   
   /* Styles pour les contrôles du carrousel au survol */
-  #imageCarousel:hover .carousel-control-prev,
-  #imageCarousel:hover .carousel-control-next {
+  #accueil#imageCarousel:hover .carousel-control-prev,
+  #accueil#imageCarousel:hover .carousel-control-next {
     opacity: 1;
     margin: 0;
     width: auto; /* Ajuste la largeur automatiquement */
   }
   
-  .custom-slide {
+  #accueil .custom-slide {
     position: relative;
 }
 
-.image-container img{
+#accueil .image-container img{
     width: 100%;
     height: 70vh;
     position: relative;
 }
 
-.buttons {
+#accueil .buttons {
     position: absolute;
     bottom: 20px; /* Ajustez cette valeur pour réduire l'espace */
     left: 0;
@@ -269,30 +285,30 @@ body {
     justify-content: center; /* Centre les boutons horizontalement */
 }
 
-.buttons button {
+#accueil .buttons button {
     margin-right: 10px;
 }
 
-.buttons button:nth-child(2)::after {
+#accueil .buttons button:nth-child(2)::after {
   content: " >"; /* Ajoute une flèche simple à droite du texte du bouton 2 */
   margin-left: 5px; /* Ajoute un espacement entre le texte du bouton et la flèche */
 }
 
-.btn-primary{
+#accueil .btn-primary{
   background-color: beige;
     color: #000000;
     border: none;
   box-shadow: none; /* Supprime l'ombre au survol */
 }
-.btn-primary:hover {
+#accueil .btn-primary:hover {
   background-color: red; /* Couleur rouge lors du survol */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ajoute une ombre au survol */
 }
 
-.btn-secondary{
+#accueil .btn-secondary{
   border: none;
   box-shadow: none; /* Supprime l'ombre au survol */
 }
-.btn-secondary:hover {
+#accueil .btn-secondary:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ajoute une ombre au survol */
 }

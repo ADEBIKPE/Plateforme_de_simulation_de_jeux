@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <<?php
+  <?php
     include("header.inc.php")
     ?>
   <body class="menu_de_navigation">
@@ -22,11 +22,8 @@
               <a class="nav-link active lien" href="#" aria-disabled="false">Historique</a>
             </li>  
           </ul>
-          
-          
-          <form class="d-flex" role="search">
             <button class="btn deco" onclick="window.location.href='logout.php'">Déconnexion</button>
-          </form>
+          
         </div>
       </div>
     </nav>

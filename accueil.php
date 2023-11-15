@@ -9,7 +9,7 @@ $titre = "Chez " . $login;
 include 'header.inc.php';
 include 'menu_membre.php';
 ?>
-<div class="content">
+<div class="content" id="accueil">
     <div class="container" id="container_membre">
 
         <?php

@@ -3,7 +3,7 @@
 
 
 
-$titre = "Liste Utilisateur";
+$titre = "Liste Jeux";
 include 'header.inc.php';
 include 'menu_admin.php';
 
@@ -11,19 +11,14 @@ include 'menu_admin.php';
 <div class="content">
 
   <div class="container">
-    <h1>Contenu</h1>
+    <h1>Jeux</h1>
+    <div></br></div>
 
 
     
 
     <table class="table table-bg">
-      <thead>
-        <tr>
-          <th scope="row">ID</th>
-          <th scope="row">Nom</th>
-          <th scope="row">Photo</th>
-        </tr>
-      </thead>
+      
       <tbody>
 
         <?php
@@ -39,20 +34,32 @@ include 'menu_admin.php';
 
         $i = 1;
         if ($stmt = $mysqli->prepare("SELECT * FROM jeu")) {
-
+          
           $stmt->execute();
           $result = $stmt->get_result();
-          while ($row = $result->fetch_assoc()) {
-            echo '<tr>';
-            echo '<th scope="row">' . $i . '</th>';
-           /* echo '<td>' . $row['idJeu'] . '</td>';*/ // Affiche l'ID dans la colonne "ID"
-            echo '<td>' . $row['nom'] . '</td>'; // Affiche le nom dans la colonne "Nom"
-            echo '<td><img src="' . $row['image'] . '" alt="Image du jeu" style="max-width: 100px; max-height: 100px;"></td>'; // Affiche l'image avec une largeur et une hauteur maximales de 100 pixels
-            echo '</tr>';
-            $i++;
+          if ($result->num_rows > 0) { 
+            echo '<thead>
+          <tr>
+            <th scope="row">#</th>
+            <th scope="row">Nom</th>
+            <th scope="row">Photo</th>
+          </tr>
+        </thead>';
+            while ($row = $result->fetch_assoc()) {
+              $idGame = $row['idJeu'];
+              echo '<tr>';
+              echo '<th scope="row">' . $i . '</th>';
+            /* echo '<td>' . $row['idJeu'] . '</td>';*/ // Affiche l'ID dans la colonne "ID"
+              echo '<td>' . $row['nom'] . '</td>'; // Affiche le nom dans la colonne "Nom"
+              echo '<td><img src="export_image.php?id='.$idGame.'" alt="Image du jeu" style="max-width: 100px; max-height: 100px;"></td>'; // Affiche l'image avec une largeur et une hauteur maximales de 100 pixels
+              echo '</tr>';
+              $i++;
+            }
+          }else{
+            echo '<h3>Aucun jeu enregistré.</h3>';
+          }
         }
         
-        }
 
         ?>
 

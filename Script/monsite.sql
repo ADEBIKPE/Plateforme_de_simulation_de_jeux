@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 10 nov. 2023 à 03:22
+-- Généré le : mer. 15 nov. 2023 à 00:32
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -28,22 +28,15 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `jeu` (
-  `idJeu` int(2) NOT NULL,
+  `idJeu` int(11) NOT NULL,
   `nom` varchar(150) NOT NULL,
-  `description` varchar(15000) NOT NULL,
-  `regle` varchar(255) NOT NULL,
-  `categorie` varchar(150) NOT NULL,
-  `image` varchar(255) NOT NULL
+  `description` text NOT NULL,
+  `regle` longblob NOT NULL,
+  `categorie` varchar(1500) NOT NULL,
+  `image` longblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Déchargement des données de la table `jeu`
---
 
-INSERT INTO `jeu` (`idJeu`, `nom`, `description`, `regle`, `categorie`, `image`) VALUES
-(1, 'Poker', 'Le poker est un jeu de cartes de stratégie et de bluff où les joueurs parient pour gagner des jetons en combinant des cartes.', 'règles/poker.pdf', 'Jeu de société', 'images/Poker.jpg');
-
--- --------------------------------------------------------
 
 --
 -- Structure de la table `partie`
@@ -75,6 +68,15 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`idUser`, `nom`, `prenom`, `email`, `passwd`, `role`, `date_de_naissance`, `nom_de_avatar`) VALUES
+(1, 'KOTIN', 'Chancel', 'chancelkotin24@gmail.com', '$2y$12$MYoBpyNy.9Y7RZB8G0oUXu1Tf9xFd22d5MYDct30BR84WNCMsuiMi', 2, '2003-04-24', 'Chancel KOTIN'),
+(2, 'KOTIN', 'Chancel', 'chancelmerveil24@gmail.com', '$2y$12$zM7TOT4uDi2gbJ4K4tAte.OWD97h2n30jeB2SlU0XhaijMK34ksI6', 2, '2001-04-23', 'Chancel KOTIN'),
+(3, 'jhg', 'ygtfd', 'chancel@gmail.com', '$2y$10$PjTlrQxvsGLBMCxDWQ8SueqCjWaNf2xkO346/Kpi1x.X/Kc9FfXQO', 1, '2023-11-15', 'kjhgfd');
+
+--
 -- Index pour les tables déchargées
 --
 
@@ -104,7 +106,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `jeu`
 --
 ALTER TABLE `jeu`
-  MODIFY `idJeu` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idJeu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `partie`
@@ -116,7 +118,7 @@ ALTER TABLE `partie`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `idUser` int(2) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUser` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

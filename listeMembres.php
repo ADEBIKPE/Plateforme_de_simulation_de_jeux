@@ -11,21 +11,13 @@ include 'menu_admin.php';
 <div class="content">
 
   <div class="container">
-    <h1>Contenu</h1>
+    <h1>Utilisateurs</h1>
+    <div></br></div>
 
 
 
     <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Nom</th>
-          <th scope="col">Prénom</th>
-          <th scope="col">Email</th>
-          <th scope="col">Role</th>
-          <th scope="col">Action</th>
-        </tr>
-      </thead>
+      
       <tbody>
 
         <?php
@@ -44,19 +36,37 @@ include 'menu_admin.php';
 
           $stmt->execute();
           $result = $stmt->get_result();
-          while ($row = $result->fetch_assoc()) {
-            echo '<tr>';
-            echo '<th scope="row">' . $i . '</th>';
-            echo '<td>' . $row['nom'] . '</td>';
-            echo '<td>' . $row['prenom'] . '</td>';
-            echo '<td>' . $row['email'] . '</td>';
-            echo '<td>' . $row['role'] . '</td>';
-            echo '<td><a href="delete.php?email=' . $row['email'] . '" class="btn btn-danger">Supprimer</a></td>';
-            echo '</tr>';
-            $i++;
-          }
-        }
 
+          if ($result->num_rows > 0) {
+            echo '<thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nom</th>
+              <th scope="col">Prénom</th>
+              <th scope="col">Email</th>
+              <th scope="col">Role</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>';
+            while ($row = $result->fetch_assoc()) {
+              echo '<tr>';
+              echo '<th scope="row">' . $i . '</th>';
+              echo '<td>' . $row['nom'] . '</td>';
+              echo '<td>' . $row['prenom'] . '</td>';
+              echo '<td>' . $row['email'] . '</td>';
+              if( $row['role']==1)
+                echo '<td>Administrateur</td>';
+              else
+                echo '<td>Utilisateur</td>';
+              echo '<td><a href="delete.php?email=' . $row['email'] . '" class="btn btn-danger">Supprimer</a></td>';
+              echo '</tr>';
+              $i++;
+            }
+          }else{
+              echo '<h1>Aucun membre enregistré</h1>';
+          }
+
+        }
         ?>
 
       </tbody>
