@@ -7,7 +7,7 @@ include 'menu_admin.php';
 <div class="content">
 
     <div class="container">
-        <h1>Ajout d'un Jeux </h1>
+        <h1>Ajout d'un Jeu </h1>
         <form method="POST" action="tt_jeux.php" enctype="multipart/form-data">
             <div class="container">
                 <div class="row my-3">

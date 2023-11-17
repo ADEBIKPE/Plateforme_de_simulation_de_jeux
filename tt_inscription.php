@@ -1,5 +1,10 @@
 <?php
 session_start(); // Pour les messages
+//Récupération et test du paramètre
+if (isset($_GET['role']) && ctype_digit($_GET['role']))
+   {
+    $rol = $_GET['role'];
+   }
 
 // Contenu du formulaire :
 $nom = htmlentities($_POST['nom']);
@@ -27,9 +32,8 @@ if ($mysqli->connect_error) {
 // Par exemple, si vous avez une option pour sélectionner le rôle dans le formulaire.
 
 // Si l'option "role" est égale à "1" (administrateur), vous pouvez le modifier :
-if (isset($_POST['role']) && $_POST['role'] == 1) {
-    $role = 1; // 1 pour administrateur
-}
+    //On récupère le rôle passé en paramètre dans $role
+$role=$rol;
 
 if ($stmt = $mysqli->prepare("INSERT INTO user(nom, prenom, email, passwd, date_de_naissance, nom_de_avatar, role) VALUES (?, ?, ?, ?, ?, ?, ?)")) {
     $password = password_hash($password, PASSWORD_BCRYPT, $options);
@@ -43,5 +47,8 @@ if ($stmt = $mysqli->prepare("INSERT INTO user(nom, prenom, email, passwd, date_
 }
 
 // Redirection vers la page d'accueil par exemple :
-header('Location: connexion.php');
+if($role==2)
+    header('Location: connexion.php');
+else
+    header('Location: inscription.php?role=1');
 ?>

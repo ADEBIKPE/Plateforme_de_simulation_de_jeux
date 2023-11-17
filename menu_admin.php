@@ -20,9 +20,11 @@
                 Ajouter
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item lien" href="admin.php">Administrateur</a></li>
+                <li><a class="dropdown-item lien" href="inscription.php?role=1">Administrateur</a></li>
                 <li><hr class="dropdown-divider lien"></li>
                 <li><a class="dropdown-item lien" href="jeux.php">Jeu</a></li>
+                <li><hr class="dropdown-divider lien"></li>
+                <li><a class="dropdown-item lien" href="partie.php">Partie</a></li>
               </ul>
             </li>
             <li class="nav-item">

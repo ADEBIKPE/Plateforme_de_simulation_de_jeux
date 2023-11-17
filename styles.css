@@ -312,3 +312,49 @@ body {
 #accueil .btn-secondary:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ajoute une ombre au survol */
 }
+
+
+/*Style pour la page partie*/
+
+
+#partie h1 {
+  color: #333;
+}
+
+#partie form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#partie label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+#partie input,
+#partie select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#partie input[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+#partie input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.largeDropdown {
+  max-height: 200px; /* Ajustez la hauteur maximale selon vos besoins */
+}

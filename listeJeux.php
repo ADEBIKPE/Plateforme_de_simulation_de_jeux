@@ -47,11 +47,12 @@ include 'menu_admin.php';
         </thead>';
             while ($row = $result->fetch_assoc()) {
               $idGame = $row['idJeu'];
+              $chemin= $row['image'];
               echo '<tr>';
               echo '<th scope="row">' . $i . '</th>';
             /* echo '<td>' . $row['idJeu'] . '</td>';*/ // Affiche l'ID dans la colonne "ID"
               echo '<td>' . $row['nom'] . '</td>'; // Affiche le nom dans la colonne "Nom"
-              echo '<td><img src="export_image.php?id='.$idGame.'" alt="Image du jeu" style="max-width: 100px; max-height: 100px;"></td>'; // Affiche l'image avec une largeur et une hauteur maximales de 100 pixels
+              echo '<td><img src="' . $row['image'] . '" alt="Image du jeu" style="max-width: 100px; max-height: 100px;"></td>'; // Affiche l'image avec une largeur et une hauteur maximales de 100 pixels
               echo '</tr>';
               $i++;
             }

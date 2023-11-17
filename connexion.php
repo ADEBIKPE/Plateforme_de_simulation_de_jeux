@@ -37,7 +37,7 @@ include 'menu_visiteur.php';
         <div class="row my-3">
                         
                         <div class="col-md-4 ">
-                            <p >Vous n'avez pas encore de compte? <a href="inscription.php" class="mb-3 forgot-password-link">Inscrivez-vous</a> </p>
+                            <p >Vous n'avez pas encore de compte? <a href="inscription.php?role=2" class="mb-3 forgot-password-link">Inscrivez-vous</a> </p>
                            
                         </div>
                     </div>

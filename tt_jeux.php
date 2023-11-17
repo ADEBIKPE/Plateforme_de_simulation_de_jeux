@@ -8,21 +8,21 @@ $description = $_POST["description"];
 
  //On enregistre l'image dans le dossier images et on stocke le chemin dans la base de données
 if (isset($_FILES["image"]) && $_FILES["image"]["error"] == UPLOAD_ERR_OK) {
-  /*$destinationImage = "images/";
+  $destinationImage = "images/";
   $nomFichierImage = basename($_FILES["image"]["name"]);
   $cheminRelatifImage = $destinationImage . $nomFichierImage;
-  move_uploaded_file($_FILES["image"]["tmp_name"], $cheminRelatifImage);*/
-  $imageContent=file_get_contents($_FILES["image"]["tmp_name"]);
+  move_uploaded_file($_FILES["image"]["tmp_name"], $cheminRelatifImage);
+  //$imageContent=file_get_contents($_FILES["image"]["tmp_name"]);
 
 }
 
  // On enregistre les règles dans un dossier règles et on stocke le chemin dans la base de données
  if (isset($_FILES["regles"]) && $_FILES["regles"]["error"] == UPLOAD_ERR_OK) {
-  /*$destinationRegles = "règles/";
+  $destinationRegles = "règles/";
   $nomFichierRegles = basename($_FILES["regles"]["name"]);
   $cheminRelatifRegles = $destinationRegles . $nomFichierRegles;
-  move_uploaded_file($_FILES["regles"]["tmp_name"], $cheminRelatifRegles);*/
-  $reglesContent=file_get_contents($_FILES["regles"]["tmp_name"]);
+  move_uploaded_file($_FILES["regles"]["tmp_name"], $cheminRelatifRegles);
+  //$reglesContent=file_get_contents($_FILES["regles"]["tmp_name"]);
 
 
   
@@ -37,9 +37,9 @@ if (isset($_FILES["image"]) && $_FILES["image"]["error"] == UPLOAD_ERR_OK) {
  }
 
  if ($stmt = $mysqli->prepare("INSERT INTO jeu(nom, description, regle, categorie, image) VALUES (?, ?, ?, ?, ?)")) {
-  //$stmt->bind_param("ssbsb", $nom, $description, $reglesContent, $categorie, $imageContent);
+  $stmt->bind_param("sssss", $nom, $description,$cheminRelatifRegles, $categorie, $cheminRelatifImage);
   // Le message est mis dans la session, il est préférable de séparer message normal et message d'erreur.
-  if($stmt->execute(array($nom, $description,$reglesContent,$categorie,$imageContent))) {
+  if($stmt->execute()) {
       $_SESSION['message'] = "Enregistrement réussi";
 
   } else {
