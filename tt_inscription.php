@@ -6,6 +6,11 @@ if (isset($_GET['role']) && ctype_digit($_GET['role']))
     $rol = $_GET['role'];
    }
 
+   if($rol==1)
+   {
+    require("admin.php");
+   }
+
 // Contenu du formulaire :
 $nom = htmlentities($_POST['nom']);
 $prenom = htmlentities($_POST['prenom']);

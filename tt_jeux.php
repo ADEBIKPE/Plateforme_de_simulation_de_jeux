@@ -1,9 +1,9 @@
 <?php
   session_start(); // Pour les messages
 
-$nom=$_POST['nomjeux'];
-$categorie = $_POST["categorie"];
-$description = $_POST["description"];
+$nom=htmlentities($_POST['nomjeux']);
+$categorie = htmlentities($_POST["categorie"]);
+$description = htmlentities($_POST["description"]);
 
 
  //On enregistre l'image dans le dossier images et on stocke le chemin dans la base de données
