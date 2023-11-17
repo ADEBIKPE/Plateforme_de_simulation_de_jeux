@@ -16,7 +16,7 @@
               <a class="nav-link active lien" aria-current="page" aria-expanded="false" href="accueil.php">Accueil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active lien" href="#" aria-disabled="false">Mes Jeux</a>
+              <a class="nav-link active lien" href="listeJeuxMembre.php" aria-disabled="false">Mes Jeux</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active lien" href="#" aria-disabled="false">Historique</a>

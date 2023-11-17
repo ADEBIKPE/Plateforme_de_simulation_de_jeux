@@ -14,13 +14,7 @@ include 'menu_membre.php';
         <h1>Contenu</h1>
 
         <table class="table table-bg">
-            <thead>
-                <tr>
-                    <th scope="row">ID</th>
-                    <th scope="row">Nom</th>
-                    <th scope="row">Photo</th>
-                </tr>
-            </thead>
+            
             <tbody>
 
                 <?php
@@ -37,21 +31,36 @@ include 'menu_membre.php';
                 $idUser = $_SESSION['PROFILE']['idUser']; // Ajoutez cette ligne pour obtenir l'ID de l'utilisateur connecté
 
                 // Utilisez une jointure pour récupérer les jeux associés à l'utilisateur
-                if ($stmt = $mysqli->prepare("SELECT jeu.idJeu, jeu.nom, jeu.image FROM jeu INNER JOIN jeumembre ON jeu.idJeu = jeumembre.idJeu WHERE jeumembre.idUser = ?")) {
+                if ($stmt = $mysqli->prepare("SELECT jeu.idJeu, jeu.nom, jeu.image FROM jeu INNER JOIN jeu_membre ON jeu.idJeu = jeu_membre.idJeu WHERE jeu_membre.idUser = ?")) {
                     $stmt->bind_param("i", $idUser);
                     $stmt->execute();
                     $result = $stmt->get_result();
+                    if ($result->num_rows > 0) { 
+                        echo '<thead>
+                      <tr>
+                        <th scope="row">#</th>
+                        <th scope="row">Nom</th>
+                        <th scope="row">Photo</th>
+                        <th scope="row">Action</th>
+                        
+                      </tr>
+                    </thead>';
                     while ($row = $result->fetch_assoc()) {
                         echo '<tr>';
                         echo '<th scope="row">' . $i . '</th>';
                         echo '<td>' . $row['nom'] . '</td>';
                         echo '<td><img src="' . $row['image'] . '" alt="Image du jeu" style="max-width: 100px; max-height: 100px;"></td>';
+                        echo '<td><a href="delete_gameMembre.php?id=' . $row['idJeu'] . '" class="btn btn-danger">Supprimer</a></td>';
+                        
                         echo '</tr>';
                         $i++;
                     }
+                }else{
+                    echo '<h3>Aucun jeu dans les favoris.</h3>';
+                  }
                     $stmt->close();
+                
                 }
-
                 ?>
 
             </tbody>

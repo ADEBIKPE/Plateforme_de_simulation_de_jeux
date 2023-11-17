@@ -16,7 +16,7 @@ if (isset($_POST['ajouter'])) {
     $idJeu = isset($_POST['idJeu']) ? intval($_POST['idJeu']) : 0; // Assurez-vous que c'est un entier
 
     // Prépare et exécute la requête d'insertion avec MySQLi
-    $requete = $mysqli->prepare('INSERT INTO jeumembre (idUser, idJeu) VALUES (?, ?)');
+    $requete = $mysqli->prepare('INSERT INTO jeu_membre (idUser, idJeu) VALUES (?, ?)');
     $requete->bind_param('ii', $idUser, $idJeu);
 
     if ($requete->execute()) {
@@ -26,7 +26,8 @@ if (isset($_POST['ajouter'])) {
     }
 
     $requete->close(); // Ferme la requête après utilisation
-}
+}// Redirection vers la page d'ajout de jeux
+header('Location: accueil.php');
 
 $mysqli->close(); // Ferme la connexion après utilisation
 ?>

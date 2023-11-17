@@ -71,133 +71,70 @@ include 'menu_membre.php';
 
     <div id="imageCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
 
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="row">
-                    <div class="col-md-3 custom-slide">
-                        <div class="image-container">
-                            <img src="images/imagesJeu/Poker1.jpg" class="d-block w-100" alt="Image 1">
-                            
-                            
-                        </div>
-                        <div class="buttons">
-                                <button type="button" class="btn btn-primary">Ajouter</button>
-                                <button type="button" class="btn btn-secondary">Details</button>
-                            </div>
-                    </div>
-                    <div class="col-md-3 custom-slide">
-                        <div class="image-container">
-                            <img src="images/imagesJeu/monopoly.jpg" class="d-block w-100" alt="Image 2">
-                            <div class="buttons">
-                                <button type="button" class="btn btn-primary">Ajouter</button>
-                                <button type="button" class="btn btn-secondary">Details</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 custom-slide">
-                        <div class="image-container">
-                            <img src="images/imagesJeu/Echecs.jpg" class="d-block w-100" alt="Image 3">
-                            <div class="buttons">
-                                <button type="button" class="btn btn-primary">Ajouter</button>
-                                <button type="button" class="btn btn-secondary">Details</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 custom-slide">
-                        <div class="image-container">
-                            <img src="images/imagesJeu/Shogi.jpg" class="d-block w-100" alt="Image 4">
-                            <div class="buttons">
-                                <button type="button" class="btn btn-primary">Ajouter</button>
-                                <button type="button" class="btn btn-secondary">Details</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="carousel-inner">
+    <?php
+    // Connexion à la base de données
+    require_once("param.inc.php");
+    $mysqli = new mysqli($host, $login, $passwd, $dbname);
+    if ($mysqli->connect_error) {
+        die('Erreur de connexion (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
+    }
+    $idUser = $_SESSION['PROFILE']['idUser'];
+    // Préparez et exécutez la requête SQL pour obtenir toutes les lignes
+    $stmt = $mysqli->prepare("SELECT * FROM jeu");
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Stockez les résultats dans un tableau
+    $rows = [];
+    while ($row = $result->fetch_assoc()) {
+        $rows[] = $row;
+    }
+
+    // Fermez la connexion à la base de données
+    $stmt->close();
+    $mysqli->close();
+
+    // Affichez chaque groupe de quatre images par élément du carrousel
+    $i = 0;
+    foreach (array_chunk($rows, 4) as $group) {
+        $activeClass = ($i == 0) ? 'active' : ''; // Ajoutez la classe 'active' à la première image du groupe
+
+        echo '<div class="carousel-item ' . $activeClass . '">';
+        echo '<div class="row">';
+
+        // Récupérez et affichez chaque image du groupe
+        foreach ($group as $row) {
+            echo '<div class="col-md-3 custom-slide">';
+            echo '<div class="image-container">';
+            echo '<img src="' . $row['image'] . '" class="d-block w-100" alt="Image du jeu">';
+            echo '<div class="buttons">';
+
+            // Ajoutez un formulaire avec un bouton "Ajouter" pour chaque jeu
+            echo '<form method="POST" action="tt_mesJeux.php">';
+            echo '<input type="hidden" name="idUser" value="' . $membreId . '">';
+            echo '<input type="hidden" name="idJeu" value="' . $row['idJeu'] . '">';
+            echo '<button type="submit" name="ajouter" class="btn btn-primary">Ajouter</button>';
+            echo '</form>';
+            echo '<button type="button" class="btn btn-secondary">Details</button>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+        }
+
+        echo '</div>';
+        echo '</div>';
+
+        $i++;
+    }
+    ?>
+</div>
 
 
-            <div class="carousel-item">
-                <div class="row">
-                    <div class="col-md-3 custom-slide">
-                        <div class="image-container">
-                            <img src="images/imagesJeu/Scrabble.jpg" class="d-block w-100" alt="Image 5">
-                            <div class="buttons">
-                                <button type="button" class="btn btn-primary">Ajouter</button>
-                                <button type="button" class="btn btn-secondary">Details</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 custom-slide">
-                        <div class="image-container">
-                            <img src="images/imagesJeu/Uno.jpg" class="d-block w-100" alt="Image 6">
-                            <div class="buttons">
-                                <button type="button" class="btn btn-primary">Ajouter</button>
-                                <button type="button" class="btn btn-secondary">Details</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 custom-slide">
-                        <div class="image-container">
-                            <img src="images/imagesJeu/Cluedo.jpg" class="d-block w-100" alt="Image 7">
-                            <div class="buttons">
-                                <button type="button" class="btn btn-primary">Ajouter</button>
-                                <button type="button" class="btn btn-secondary">Details</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 custom-slide">
-                        <div class="image-container">
-                            <img src="images/imagesJeu/CodeNames.jpg" class="d-block w-100" alt="Image 8">
-                            <div class="buttons">
-                                <button type="button" class="btn btn-primary">Ajouter</button>
-                                <button type="button" class="btn btn-secondary">Details</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="carousel-item">
-                <div class="row">
-                    <div class="col-md-3 custom-slide">
-                        <div class="image-container">
-                            <img src="images/imagesJeu/ScotlandYard.jpg" class="d-block w-100" alt="Image 9">
-                            <div class="buttons">
-                                <button type="button" class="btn btn-primary">Ajouter</button>
-                                <button type="button" class="btn btn-secondary">Details</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 custom-slide">
-                        <div class="image-container">
-                            <img src="images/imagesJeu/Rummikub.jpg" class="d-block w-100" alt="Image 10">
-                            <div class="buttons">
-                                <button type="button" class="btn btn-primary">Ajouter</button>
-                                <button type="button" class="btn btn-secondary">Details</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 custom-slide">
-                        <div class="image-container">
-                            <img src="images/imagesJeu/Pacman.jpg" class="d-block w-100" alt="Image 11">
-                            <div class="buttons">
-                                <button type="button" class="btn btn-primary">Ajouter</button>
-                                <button type="button" class="btn btn-secondary">Details</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 custom-slide">
-                        <div class="image-container">
-                            <img src="images/imagesJeu/mancala.jpg" class="d-block w-100" alt="Image 12">
-                            <div class="buttons">
-                                <button type="button" class="btn btn-primary">Ajouter</button>
-                                <button type="button" class="btn btn-secondary">Details</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
+
         <!-- Flèche de contrôle gauche -->
         <a class="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
