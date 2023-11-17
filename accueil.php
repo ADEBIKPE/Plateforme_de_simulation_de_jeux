@@ -211,6 +211,23 @@ include 'menu_membre.php';
         </a>
 
     </div>
+    <!-- Section pour les parties à venir -->
+    <div class="section_P">
+        <h2>Prochaines Parties</h2>
+        <div class="flex-container">
+            <!-- Ajoutez ici les informations sur les parties à venir -->
+            <div class="section_1">
+                <h3 class="party-title">Nom de la partie 1</h3>
+                <p>Date : 01/01/2023</p>
+                <p>Heure : 18h00</p>
+            </div>
+            <div class="section_2">
+                <h3 class="party-title">Nom de la partie 2</h3>
+                <p>Date : 02/01/2023</p>
+                <p>Heure : 20h00</p>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

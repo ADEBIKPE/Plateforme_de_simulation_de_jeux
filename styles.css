@@ -259,8 +259,8 @@ body {
   }
   
   /* Styles pour les contrôles du carrousel au survol */
-  #accueil#imageCarousel:hover .carousel-control-prev,
-  #accueil#imageCarousel:hover .carousel-control-next {
+  #accueil #imageCarousel:hover .carousel-control-prev,
+  #accueil #imageCarousel:hover .carousel-control-next {
     opacity: 1;
     margin: 0;
     width: auto; /* Ajuste la largeur automatiquement */
@@ -294,22 +294,22 @@ body {
   margin-left: 5px; /* Ajoute un espacement entre le texte du bouton et la flèche */
 }
 
-#accueil .btn-primary{
+#accueil .btn.btn-primary{
   background-color: beige;
     color: #000000;
     border: none;
   box-shadow: none; /* Supprime l'ombre au survol */
 }
-#accueil .btn-primary:hover {
+#accueil .btn.btn-primary:hover {
   background-color: red; /* Couleur rouge lors du survol */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ajoute une ombre au survol */
 }
 
-#accueil .btn-secondary{
+#accueil .btn.btn-secondary{
   border: none;
   box-shadow: none; /* Supprime l'ombre au survol */
 }
-#accueil .btn-secondary:hover {
+#accueil .btn.btn-secondary:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ajoute une ombre au survol */
 }
 
@@ -357,4 +357,24 @@ body {
 
 .largeDropdown {
   max-height: 200px; /* Ajustez la hauteur maximale selon vos besoins */
+}
+
+/* Styles pour chaque partie à venir  (page_membre)*/
+#accueil .section_1,
+#accueil .section_2 {
+  border: 1px solid #ddd;
+  padding: 15px;
+  width: 200px;
+  text-align: center;
+  margin-top: 10px;
+}
+#accueil .flex-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#accueil .party-title {
+  color: red;
+  margin-top: 0;
 }
