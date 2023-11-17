@@ -1,5 +1,11 @@
 <?php
 require_once("roleadmin.php");
+session_start();
+//On récupère le paramètre et on le teste
+if (isset($_GET['choix']) && ctype_digit($_GET['choix']))
+   {
+    $choix = $_GET['choix'];
+   }
 $email=$_GET['email'];
 // Connexion :
 require_once("param.inc.php");
@@ -17,6 +23,6 @@ if ($stmt = $mysqli->prepare("DELETE FROM user WHERE email=?"))
 }
 
 
-header("location:list.php")
+header("location:listeMembres.php")
 
 ?>

@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 //Récupération et test du paramètre
 if (isset($_GET['role']) && ctype_digit($_GET['role']))
    {
@@ -9,8 +9,11 @@ $titre = "Inscription";
 include 'header.inc.php';
 if( $rol==2)
     include 'menu_visiteur.php';
-else 
+else {
+    require_once("roleadmin.php");    
     include 'menu_admin.php';
+}
+    
 ?>
 <div class="content">
     <div class="container">

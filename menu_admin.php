@@ -33,6 +33,9 @@
             <li class="nav-item">
               <a class="nav-link active lien" href="listeJeux.php" aria-disabled="false">Jeux</a>
             </li>  
+            <li class="nav-item">
+              <a class="nav-link active lien" href="listePartie.php" aria-disabled="false">Parties</a>
+            </li>  
           </ul>
           
             <button class="btn deco" onclick="window.location.href='logout.php'" type="submit">Déconnexion</button>

@@ -1,5 +1,5 @@
 <?php
-//require_once("roleadmin.php");
+require_once("roleadmin.php");
 
 
 
@@ -43,6 +43,8 @@ include 'menu_admin.php';
             <th scope="row">#</th>
             <th scope="row">Nom</th>
             <th scope="row">Photo</th>
+            <th scope="row">Action</th>
+            <th scope="row">Action</th>
           </tr>
         </thead>';
             while ($row = $result->fetch_assoc()) {
@@ -53,6 +55,8 @@ include 'menu_admin.php';
             /* echo '<td>' . $row['idJeu'] . '</td>';*/ // Affiche l'ID dans la colonne "ID"
               echo '<td>' . $row['nom'] . '</td>'; // Affiche le nom dans la colonne "Nom"
               echo '<td><img src="' . $row['image'] . '" alt="Image du jeu" style="max-width: 100px; max-height: 100px;"></td>'; // Affiche l'image avec une largeur et une hauteur maximales de 100 pixels
+              echo '<td><a href="update_game.php?id=' . $row['idJeu'] . '" class="btn btn-primary">Modifier</a></td> ';
+              echo '<td><a href="delete_game.php?id=' . $row['idJeu'] . '" class="btn btn-danger">Supprimer</a></td>';
               echo '</tr>';
               $i++;
             }

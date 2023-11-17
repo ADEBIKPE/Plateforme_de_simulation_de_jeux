@@ -15,16 +15,16 @@
                         <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="export_image.php?id=7" style="height: 400px;  object-fit: cover;"  alt="Image 1">
+                                    <img src="images/Azul.jpg" style="height: 400px;  object-fit: cover;"  alt="Image 1">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="export_image.php?id=1" style="height: 400px; object-fit: cover;" alt="Image 2">
+                                    <img src="images/Clank.jpg" style="height: 400px; object-fit: cover;" alt="Image 2">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="export_image.php?id=2" style="height: 400px; object-fit: cover;" class="d-block w-100" alt="Image 3">
+                                    <img src="images/Heat.jpg" style="height: 400px; object-fit: cover;" class="d-block w-100" alt="Image 3">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="export_image.php?id=3" style="height: 400px; object-fit: cover;" class="d-block w-100" alt="Image 4">
+                                    <img src="images/monopoly.jpg" style="height: 400px; object-fit: cover;" class="d-block w-100" alt="Image 4">
                                 </div>
                                 <!--<button class="btn deco" onclick="window.location.href='export_pdf.php?id=8'">Test affichage règles</button>-->
                             </div>
