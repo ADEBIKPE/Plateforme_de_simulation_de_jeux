@@ -19,7 +19,7 @@
               <a class="nav-link active lien" href="listeJeuxMembre.php" aria-disabled="false">Mes Jeux</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active lien" href="#" aria-disabled="false">Historique</a>
+              <a class="nav-link active lien" href="listeHistorique.php" aria-disabled="false">Historique</a>
             </li>  
           </ul>
             <button class="btn deco" onclick="window.location.href='logout.php'">Déconnexion</button>

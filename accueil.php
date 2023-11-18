@@ -80,22 +80,22 @@ include 'menu_membre.php';
         die('Erreur de connexion (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
     }
     $idUser = $_SESSION['PROFILE']['idUser'];
-    // Préparez et exécutez la requête SQL pour obtenir toutes les lignes
+    // Préparer et exécuter la requête SQL pour obtenir toutes les lignes
     $stmt = $mysqli->prepare("SELECT * FROM jeu");
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // Stockez les résultats dans un tableau
+    // Stocker les résultats dans un tableau
     $rows = [];
     while ($row = $result->fetch_assoc()) {
         $rows[] = $row;
     }
 
-    // Fermez la connexion à la base de données
+    // Fermer la connexion à la base de données
     $stmt->close();
     $mysqli->close();
 
-    // Affichez chaque groupe de quatre images par élément du carrousel
+    // Afficher chaque groupe de quatre images par élément du carrousel
     $i = 0;
     foreach (array_chunk($rows, 4) as $group) {
         $activeClass = ($i == 0) ? 'active' : ''; // Ajoutez la classe 'active' à la première image du groupe
@@ -103,20 +103,24 @@ include 'menu_membre.php';
         echo '<div class="carousel-item ' . $activeClass . '">';
         echo '<div class="row">';
 
-        // Récupérez et affichez chaque image du groupe
+        // Récupérer et afficher chaque image du groupe
         foreach ($group as $row) {
             echo '<div class="col-md-3 custom-slide">';
             echo '<div class="image-container">';
             echo '<img src="' . $row['image'] . '" class="d-block w-100" alt="Image du jeu">';
             echo '<div class="buttons">';
 
-            // Ajoutez un formulaire avec un bouton "Ajouter" pour chaque jeu
+            // Ajouter un formulaire avec un bouton "Ajouter" pour chaque jeu
             echo '<form method="POST" action="tt_mesJeux.php">';
             echo '<input type="hidden" name="idUser" value="' . $membreId . '">';
             echo '<input type="hidden" name="idJeu" value="' . $row['idJeu'] . '">';
             echo '<button type="submit" name="ajouter" class="btn btn-primary">Ajouter</button>';
+
+            
+            echo '<button class="btn btn-secondary" onclick="showDetails(\'' . htmlspecialchars($row['description'], ENT_QUOTES, 'UTF-8') . '\')">Détails</button>';
+
             echo '</form>';
-            echo '<button type="button" class="btn btn-secondary">Details</button>';
+            
             echo '</div>';
             echo '</div>';
             echo '</div>';
@@ -128,6 +132,13 @@ include 'menu_membre.php';
         $i++;
     }
     ?>
+    <script>
+    function showDetails(detail) {
+        // Utilisez la fonction prompt pour afficher une boîte de dialogue avec le détail
+        alert('Détails du jeu :\n' + detail);
+    }
+</script>
+
 </div>
 
 
@@ -151,19 +162,79 @@ include 'menu_membre.php';
     <!-- Section pour les parties à venir -->
     <div class="section_P">
         <h2>Prochaines Parties</h2>
-        <div class="flex-container">
-            <!-- Ajoutez ici les informations sur les parties à venir -->
-            <div class="section_1">
-                <h3 class="party-title">Nom de la partie 1</h3>
-                <p>Date : 01/01/2023</p>
-                <p>Heure : 18h00</p>
-            </div>
-            <div class="section_2">
-                <h3 class="party-title">Nom de la partie 2</h3>
-                <p>Date : 02/01/2023</p>
-                <p>Heure : 20h00</p>
-            </div>
-        </div>
+        <table class="table table-bg">
+    <thead>
+        <tr>
+            <th scope="row">#</th>
+            <th scope="row">Jeu</th>
+            <th scope="row">Date</th>
+            <th scope="row">Heure</th>
+            <th scope="row">Nombre nécessaire</th>
+            <th scope="row">Nombre Inscrits</th>
+            <th scope="row">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php
+    require_once("param.inc.php");
+    $mysqli = new mysqli($host, $login, $passwd, $dbname);
+    if ($mysqli->connect_error) {
+        die('Erreur de connexion (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
+    }
+
+    $i = 1;
+    $idUser = $_SESSION['PROFILE']['idUser'];
+
+    if ($stmt = $mysqli->prepare("SELECT partie.*, jeu.nom AS nomJeu, COUNT(inscription_Partie.idPartie) AS nombreInscrits 
+                                  FROM partie 
+                                  LEFT JOIN jeu ON partie.idJeu = jeu.idJeu
+                                  LEFT JOIN inscription_Partie ON partie.idPartie = inscription_Partie.idPartie
+                                  GROUP BY partie.idPartie")) {
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        while ($row = $result->fetch_assoc()) {
+            $idPartie = $row['idPartie'];
+
+            // Vérifier si l'utilisateur est déjà inscrit à la partie
+            $stmtCheckInscription = $mysqli->prepare("SELECT idInscription_Partie FROM inscription_Partie WHERE idUser = ? AND idPartie = ?");
+            $stmtCheckInscription->bind_param("ii", $idUser, $idPartie);
+            $stmtCheckInscription->execute();
+            $resultCheckInscription = $stmtCheckInscription->get_result();
+
+            echo '<tr>';
+            echo '<th scope="row">' . $i . '</th>';
+            echo '<td>' . $row['nomJeu'] . '</td>';
+            echo '<td>' . $row['date_partie'] . '</td>';
+            echo '<td>' . $row['heure'] . '</td>';
+            echo '<td>' . $row['nb_max_necessaire'] . '</td>';
+            echo '<td>' . $row['nombreInscrits'] . '</td>';
+
+            // Afficher le bouton Participer uniquement si l'utilisateur n'est pas déjà inscrit
+            if ($resultCheckInscription->num_rows == 0) {
+                echo '<td><a href="tt_inscriptionMembre.php?id=' . $row['idPartie'] . '" class="btn btn-danger">Participer</a></td>';
+            } else {
+                echo '<td>Déjà inscrit</td>';
+            }
+
+            echo '</tr>';
+            $i++;
+
+            $stmtCheckInscription->close();
+        }
+    }
+    // Insérer l'historique de la partie dans la table historique_parties
+$stmtHistorique = $mysqli->prepare("INSERT INTO historique_parties (idUser, idPartie, date_joue) VALUES (?, ?, NOW())");
+$stmtHistorique->bind_param("ii", $idUser, $idPartie);
+$stmtHistorique->execute();
+$stmtHistorique->close();
+
+    $mysqli->close();
+    ?>
+</tbody>
+
+</table>
+
     </div>
 </div>
 
