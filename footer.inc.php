@@ -5,7 +5,7 @@
 
 <footer id="footer">
   <!-- Contenu du pied de page -->
-    <h4>ESIGELEC 2023</h4>
+    <h4> <span  style="margin-right: 200px;"> TIAMIYOU Halil-KOTIN Chancel</span>  <span style="margin-right: 200px;">ESIGELEC 2023</span></h4>        
 </footer>
 
 </html>

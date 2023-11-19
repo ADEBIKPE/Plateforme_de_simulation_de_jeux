@@ -394,3 +394,10 @@ body {
     text-align: justify;
 
 }
+#footer
+{
+  background-color: #e0e0e0; 
+  color: black;
+  font-family: 'Dancing', sans-serif;
+  font-size: 30px;
+}
