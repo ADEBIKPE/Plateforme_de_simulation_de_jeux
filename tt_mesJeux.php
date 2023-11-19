@@ -15,19 +15,34 @@ if (isset($_POST['ajouter'])) {
     $idUser = isset($_POST['idUser']) ? intval($_POST['idUser']) : 0; // Assurez-vous que c'est un entier
     $idJeu = isset($_POST['idJeu']) ? intval($_POST['idJeu']) : 0; // Assurez-vous que c'est un entier
 
-    // Prépare et exécute la requête d'insertion avec MySQLi
-    $requete = $mysqli->prepare('INSERT INTO jeu_membre (idUser, idJeu) VALUES (?, ?)');
-    $requete->bind_param('ii', $idUser, $idJeu);
+    //Tester si le jeu a été déjà été ajouté aux favoris
 
-    if ($requete->execute()) {
-        echo 'Enregistrement réussi dans la table jeumembre.';
-    } else {
-        echo 'Erreur lors de l\'enregistrement dans la table jeumembre.';
+    if($stmtCheckAjout = $mysqli->prepare("SELECT id FROM jeu_membre WHERE idUser = ? AND idJeu = ?")){
+            $stmtCheckAjout->bind_param("ii", $idUser, $idJeu);
+            $stmtCheckAjout->execute();
+            $resultCheckAjout = $stmtCheckAjout->get_result();
+
+            if ($resultCheckAjout->num_rows > 0) {
+                // L'utilisateur est déjà inscrit, 
+                $_SESSION['message'] = 'Vous avez déjà enregistré ce jeu dans vos favoris';
+            } else {
+
+                    // Prépare et exécute la requête d'insertion avec MySQLi
+                    $requete = $mysqli->prepare('INSERT INTO jeu_membre (idUser, idJeu) VALUES (?, ?)');
+                    $requete->bind_param('ii', $idUser, $idJeu);
+
+                    if ($requete->execute()) {
+                         $_SESSION['message'] = 'Ajout d\'un nouveau jeu favori ';
+                    } else {
+                        $_SESSION['message'] = 'Erreur lors de l\'ajout de ce nouveau jeu favori';
+                    }
+
+                    $requete->close(); // Ferme la requête après utilisation
+            }
+            $stmtCheckAjout->close();
+        }// Redirection vers la page Mes Jeux
+    header('Location: listeJeuxMembre.php');
+
+    $mysqli->close(); // Ferme la connexion après utilisation
     }
-
-    $requete->close(); // Ferme la requête après utilisation
-}// Redirection vers la page d'ajout de jeux
-header('Location: accueil.php');
-
-$mysqli->close(); // Ferme la connexion après utilisation
 ?>

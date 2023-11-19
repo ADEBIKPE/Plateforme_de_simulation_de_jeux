@@ -33,7 +33,14 @@ include 'menu_admin.php';
 
 
         $i = 1;
-        if ($stmt = $mysqli->prepare("SELECT * FROM partie")) {
+
+        //On fait une requête pour récupérer la partie, le nom du jeu, ainsi que le nombre d'inscriptions à cette partie
+        if ($stmt = $mysqli->prepare("SELECT partie.*, jeu.nom AS nomJeu,
+        COUNT(inscription.idPartie) AS nombreInscrits
+        FROM partie
+        INNER JOIN jeu ON partie.idJeu = jeu.idJeu
+        LEFT JOIN inscription ON partie.idPartie = inscription.idPartie
+        GROUP BY partie.idPartie")) {
           
           $stmt->execute();
           $result = $stmt->get_result();
@@ -55,36 +62,6 @@ include 'menu_admin.php';
                 </thead>';
                     while ($row = $result->fetch_assoc()) {
 
-                      $idGame= $row['idJeu'];
-
-                        //Récupérer le nom du jeu associer à la partie
-                        $nomJeu="Chancel";
-                        if($stmt2= $mysqli->prepare("SELECT nom FROM jeu WHERE idJeu=?")){
-                           // Liaison des paramètres
-                            $stmt2->bind_param("i", $idGame);
-
-                            // Exécution de la requête
-                            $stmt2->execute();
-
-                            // Récupération des résultats
-                            $resultat = $stmt2->get_result();
-
-                            // Vérification s'il y a des résultats
-                            if ($resultat->num_rows > 0) {
-                                // Récupération des données dans une variable
-                                $rowNomJeu = $resultat->fetch_assoc();
-                                $nomJeu = $rowNomJeu['nom']; //
-                            }
-                            $stmt2->close();
-
-                        }
-                        else
-                        {
-                          $nomJeu='Indisponible';
-                          echo $nomJeu;
-                          echo "Etienne";
-                          $stmt2->close();
-                        }
                             
                         
                         $nombreInscrits=2;
@@ -93,11 +70,11 @@ include 'menu_admin.php';
                         echo '<tr>';
                         echo '<th scope="row">' . $i . '</th>';
                         /* echo '<td>' . $row['idJeu'] . '</td>';*/ // Affiche l'ID dans la colonne "ID"
-                        echo '<td>' . $nomJeu. '</td>'; // Affiche le nom dans la colonne "Nom"
+                        echo '<td>' . $row['nomJeu']. '</td>'; // Affiche le nom dans la colonne "Nom"
                         echo '<td>' . $date. '</td>';
                         echo '<td>' . $heure. '</td>';
                         echo '<td>' . $row['nb_max_necessaire']. '</td>';
-                        echo '<td>' . $nombreInscrits. '</td>';
+                        echo '<td>' .  $row['nombreInscrits']. '</td>';
                         echo '<td><a href="delete_partie.php?id=' . $row['idPartie'] . '" class="btn btn-danger">Annuler</a></td>';
                         echo '</tr>';
                         $i++;

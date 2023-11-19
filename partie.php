@@ -1,10 +1,7 @@
 <?php
 require_once("roleadmin.php");    
-
-
-
 $titre = "Création Parties";
-include 'header.inc.php';
+//include 'header.inc.php';
 include 'menu_admin.php';
 
 ?>
@@ -51,7 +48,7 @@ include 'menu_admin.php';
                             
                             while ($row = $result->fetch_assoc()) {
                                 echo "<option value='" . $row["idJeu"] . "'>" . $row["nom"] . "</option>";
-                                echo $row["nomJeu"];
+                                echo $row["nom"];
                             }
                         }else
                         echo "Chancel";

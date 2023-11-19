@@ -5,19 +5,28 @@ if (!isset($_SESSION['PROFILE'])) {
     header('Location: index.php');
 }
 $login = $_SESSION['PROFILE']['email'];
-$titre = "Chez " . $login;
+$titre = "Mes favoris" ;
 include 'header.inc.php';
 include 'menu_membre.php';
 ?>
 <div class="content">
     <div class="container">
-        <h1>Contenu</h1>
+        <h1>Mes favoris</h1>
 
         <table class="table table-bg">
             
             <tbody>
 
                 <?php
+
+                 //afficher le message venant lors de l'appel de cette page s'il y en a
+         if (isset($_SESSION['message'])) {
+            echo '<div class="alert alert-primary alert-dismissible fade show" role="alert">';
+            echo $_SESSION['message'];
+            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+            echo '</div>';
+            unset($_SESSION['message']);
+        }
 
                 // Connexion :
                 require_once("param.inc.php");

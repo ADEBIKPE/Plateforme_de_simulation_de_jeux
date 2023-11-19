@@ -31,20 +31,21 @@
                   // Redirection vers la page admin.php ou autres pages en fonction du role (tuteur,admin, etc.);
                   $_SESSION['PROFILE']=$row;
                 //$_SESSION['message'] = "Authentification réussi pour un role inconnu.";
-                if($row["role"]==1){
+                if($row["role"]==2){
                   
-                  $_SESSION['message'] = "Authentification réussi pour un admin.";
+                  $_SESSION['message'] = "Authentification réussi pour un membre.";
                  
-                  header('Location: admin.php');
+                  header('Location: accueil.php');
                 }
-                if($row["role"]==2)
+                else
                 {
-                $_SESSION['message'] = "Authentification réussi pour un membre.";
-                header('Location: accueil.php');
+                $_SESSION['message'] = "Authentification réussi pour un admin.";
+
+                header('Location: admin.php');
               }          
             
               }else { 
-                // Redirection vers la page d'authetification connexion.php
+                // Redirection vers la page d'authentification connexion.php
               $_SESSION['message'] = "Erreur de connexion";
                 header('Location: connexion.php');
                 
