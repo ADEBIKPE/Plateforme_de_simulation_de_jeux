@@ -206,24 +206,37 @@ include 'menu_membre.php';
                 <th scope="row">Action</th>
             </tr>
             </thead>';
-                while ($row = $result->fetch_assoc()) {
-
-                        
-                    
-                  
-                    $date = $row['date_partie'];
-                    $heure= $row['heure'];
-                    echo '<tr>';
-                   
-                    //echo '<td>' . $row['idPartie'] . '</td>'; // Affiche l'ID dans la colonne "ID"
-                    echo '<td>' . $row['nomJeu']. '</td>'; // Affiche le nom dans la colonne "Nom"
-                    echo '<td>' . $date. '</td>';
-                    echo '<td>' . $heure. '</td>';
-                    echo '<td>' . $row['duree']. '</td>';
-                    echo '<td>' . $row['nombreInscrits']. '</td>';
+            while ($row = $result->fetch_assoc()) {
+                $date = $row['date_partie'];
+                $heure = $row['heure'];
+            
+                // Vérifier si l'utilisateur est déjà inscrit à cette partie
+                $idPartie = $row['idPartie'];
+                $idUser = $_SESSION['PROFILE']['idUser'];
+            
+                $stmtCheckInscription = $mysqli->prepare("SELECT idPartie FROM inscription WHERE idPartie = ? AND idUser = ?");
+                $stmtCheckInscription->bind_param("ii", $idPartie, $idUser);
+                $stmtCheckInscription->execute();
+                $stmtCheckInscription->store_result();
+            
+                echo '<tr>';
+                echo '<td>' . $row['nomJeu']. '</td>'; // Affiche le nom dans la colonne "Nom"
+                echo '<td>' . $date. '</td>';
+                echo '<td>' . $heure. '</td>';
+                echo '<td>' . $row['duree']. '</td>';
+                echo '<td>' . $row['nombreInscrits']. '</td>';
+            
+                // Afficher le bouton Participer uniquement si l'utilisateur n'est pas déjà inscrit
+                if ($stmtCheckInscription->num_rows == 0) {
                     echo '<td><a href="tt_inscriptionMembre.php?id=' . $row['idPartie'] . '" class="btn btn-success">S\'inscrire</a></td>';
-                    echo '</tr>';
-                    $i++;
+                } else {
+                    echo '<td>Déjà inscrit</td>';
+                }
+            
+                echo '</tr>';
+                
+                $stmtCheckInscription->close();
+                $i++;
             }
           }else{
             echo '<h3>Aucune partie enregistrée.</h3>';
