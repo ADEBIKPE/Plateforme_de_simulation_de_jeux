@@ -9,7 +9,9 @@ include 'menu_admin.php';
 
     <div class="container">
         <h1>Modifier un Jeu </h1>
-        <form method="POST" action="tt_update_game.php?id=" enctype="multipart/form-data">
+        
+        <form method="POST" action="tt_update_game.php?id=<?php echo $id; ?>" enctype="multipart/form-data">
+
             <div class="container">
                 <div class="row my-3">
 
