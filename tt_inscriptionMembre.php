@@ -31,12 +31,13 @@ if ($mysqli->connect_error) {
                 // L'utilisateur est déjà inscrit, 
                 $_SESSION['message'] = 'Vous êtes déjà inscrit à cette partie.';
             } else {
+                $statut=0;
                 // L'utilisateur n'est pas encore inscrit, procédez à l'inscription
-                if($stmtInscription = $mysqli->prepare("INSERT INTO inscription (idPartie,idUser) VALUES (?, ?)")){
-                    $stmtInscription->bind_param("ii", $idPartie, $idUser);
+                if($stmtInscription = $mysqli->prepare("INSERT INTO inscription (idPartie,idUser,statut_inscription) VALUES (?, ?,?)")){
+                    $stmtInscription->bind_param("iii", $idPartie, $idUser,$statut);
 
                 if ($stmtInscription->execute()) {
-                    $_SESSION['message'] = "Inscription réussie à la partie.";
+                    $_SESSION['message'] = "Inscription réussie. En attente de validation";
                 } else {
                     $_SESSION['message'] = "Erreur lors de l'inscription à la partie.";
                 }

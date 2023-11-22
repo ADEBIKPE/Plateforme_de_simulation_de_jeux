@@ -24,7 +24,7 @@ include 'menu_visiteur.php';
         <form method="POST" action="tt_connexion.php">
             <div class="mb-3 col-lg-5">
                 <label for="exampleInputEmail1" class="form-label">Adresse mail</label>
-                <input name = "email"type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input name = "email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 
             </div>
             <div class="mb-3 col-lg-5">

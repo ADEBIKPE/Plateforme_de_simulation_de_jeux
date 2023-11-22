@@ -32,7 +32,7 @@ include 'menu_membre.php';
         if ($stmtHistorique = $mysqli->prepare("SELECT partie.*, jeu.nom AS nomJeu
         FROM partie
         INNER JOIN jeu ON partie.idJeu = jeu.idJeu
-        INNER JOIN inscription ON partie.idPartie = inscription.idPartie
+        INNER JOIN inscription ON partie.idPartie = inscription.idPartie AND inscription.statut_inscription=1
         WHERE inscription.idUser = ?
         AND partie.date_partie < CURDATE()")) {
             $stmtHistorique->bind_param("i", $idUser);

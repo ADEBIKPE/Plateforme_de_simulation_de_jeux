@@ -379,6 +379,20 @@ body {
   margin-top: 0;
 }
 
+
+#encadrer-contenu {
+  border: 1px solid #ccc; /* Ajoute une bordure grise de 1 pixel autour de la div englobante */
+  padding: 10px; /* Ajoute un espacement intérieur de 10 pixels pour plus de visibilité */
+  margin: 10px; /* Ajoute une marge extérieure de 10 pixels pour plus d'espace autour du contenu */
+}
+
+#accueil .section_P {
+ 
+  font-family: 'Dancing', sans-serif;
+    font-size: 17px;
+    font-style: italic;
+    text-align: justify;
+}
 /* Style personnalisé pour la boîte de dialogue */
 #accueil .custom-popup-class {
   border-radius: 10px;
