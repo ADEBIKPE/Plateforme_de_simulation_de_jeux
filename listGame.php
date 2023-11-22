@@ -1,6 +1,6 @@
 
 <?php
-session_start();
+require_once('roleMembre.php');
 
 $titre = "Liste Jeux";
 include 'header.inc.php';

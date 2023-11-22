@@ -1,9 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['PROFILE'])) {
-    $_SESSION['erreur'] = "Vous devez être connecté";
-    header('Location: index.php');
-}
+require_once('roleMembre.php');
 $login = $_SESSION['PROFILE']['email'];
 $titre = "Historique";
 include 'header.inc.php';

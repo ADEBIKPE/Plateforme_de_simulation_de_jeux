@@ -9,7 +9,7 @@ $description = htmlentities($_POST["description"]);
  //On enregistre l'image dans le dossier images et on stocke le chemin dans la base de données
 if (isset($_FILES["image"]) && $_FILES["image"]["error"] == UPLOAD_ERR_OK) {
   $destinationImage = "images/";
-  $nomFichierImage = basename($_FILES["image"]["name"]);
+  $nomFichierImage = $_FILES["image"]["name"];
   $cheminRelatifImage = $destinationImage . $nomFichierImage;
   move_uploaded_file($_FILES["image"]["tmp_name"], $cheminRelatifImage);
   //$imageContent=file_get_contents($_FILES["image"]["tmp_name"]);
@@ -19,7 +19,7 @@ if (isset($_FILES["image"]) && $_FILES["image"]["error"] == UPLOAD_ERR_OK) {
  // On enregistre les règles dans un dossier règles et on stocke le chemin dans la base de données
  if (isset($_FILES["regles"]) && $_FILES["regles"]["error"] == UPLOAD_ERR_OK) {
   $destinationRegles = "règles/";
-  $nomFichierRegles = basename($_FILES["regles"]["name"]);
+  $nomFichierRegles = $_FILES["regles"]["name"];
   $cheminRelatifRegles = $destinationRegles . $nomFichierRegles;
   move_uploaded_file($_FILES["regles"]["tmp_name"], $cheminRelatifRegles);
   //$reglesContent=file_get_contents($_FILES["regles"]["tmp_name"]);

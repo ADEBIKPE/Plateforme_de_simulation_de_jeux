@@ -1,11 +1,14 @@
 <?php
-session_start();
 
-
+require_once('roleMembre.php');
 
 $titre = "Mes inscriptions";
 include 'header.inc.php';
 include 'menu_membre.php';
+
+if(!isset($_SESSION['PROFILE']['idUser']))
+  header('Location:index.php');
+
 
 $idUser=$_SESSION['PROFILE']['idUser'];
 ?>

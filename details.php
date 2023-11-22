@@ -1,5 +1,5 @@
 <?php 
-session_start();
+require_once('roleMembre.php');
 $titre="Détails des Jeux";
 include("header.inc.php");
 
