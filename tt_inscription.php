@@ -40,16 +40,37 @@ if ($mysqli->connect_error) {
     //On récupère le rôle passé en paramètre dans $role
 $role=$rol;
 
-if ($stmt = $mysqli->prepare("INSERT INTO user(nom, prenom, email, passwd, date_de_naissance, nom_de_avatar, role) VALUES (?, ?, ?, ?, ?, ?, ?)")) {
-    $password = password_hash($password, PASSWORD_BCRYPT, $options);
-    $stmt->bind_param("ssssssi", $nom, $prenom, $email, $password, $dateNaissance, $nomAvatar, $role);
-    // Le message est mis dans la session, il est préférable de séparer les messages normaux et les messages d'erreur.
-    if ($stmt->execute()) {
-        $_SESSION['message'] = "Enregistrement réussi";
+// Vérifie si l'utilisateur avec cet email existe déjà
+
+if ($stmt = $mysqli->prepare("SELECT idUser FROM user WHERE email = ?")) {
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows > 0) {
+        // L'utilisateur existe déjà, affichez un message d'erreur approprié
+        $_SESSION['message'] = "Vous êtes déjà inscrit";
     } else {
-        $_SESSION['message'] = "Impossible d'enregistrer";
+        // L'utilisateur n'existe pas, procédez à l'insertion
+        $role = $rol; // Assurez-vous que $rol est défini
+
+        if ($stmt = $mysqli->prepare("INSERT INTO user(nom, prenom, email, passwd, date_de_naissance, nom_de_avatar, role) VALUES (?, ?, ?, ?, ?, ?, ?)")) {
+            $password = password_hash($password, PASSWORD_BCRYPT, $options);
+            $stmt->bind_param("ssssssi", $nom, $prenom, $email, $password, $dateNaissance, $nomAvatar, $role);
+            // Le message est mis dans la session, il est préférable de séparer les messages normaux et les messages d'erreur.
+            if ($stmt->execute()) {
+                $_SESSION['message'] = "Enregistrement réussi";
+            } else {
+                $_SESSION['message'] = "Impossible d'enregistrer";
+            }
+        }
     }
+} else {
+    $_SESSION['message'] = "Erreur de préparation de la requête.";
 }
+
+
+
 
 // Redirection vers la page d'accueil par exemple :
 if($role==2)

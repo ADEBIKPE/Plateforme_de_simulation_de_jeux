@@ -19,7 +19,10 @@ if ($stmt = $mysqli->prepare("DELETE FROM jeu_membre WHERE idJeu=?"))
  
   $stmt->bind_param("i", $id);
   $stmt->execute();
+  $_SESSION['message'] = "Suppression de jeu favori réussie";
 }
+else
+  $_SESSION['message'] = "Suppression de jeu favori échoué";
 
 
 header("location:listeJeuxMembre.php")

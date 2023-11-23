@@ -7,6 +7,20 @@ include 'header.inc.php';
 include 'menu_visiteur.php';
 ?>
 <body id="inde">
+    <?php
+        if (isset($_SESSION['deco_message'])) {
+            if ($_SESSION['deco_message'] == "Erreur de connexion") {
+                echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
+            } else {
+                echo '<div class="alert alert-primary alert-dismissible fade show" role="alert">';
+            }
+            echo $_SESSION['deco_message'];
+            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+            echo '</div>';
+            unset($_SESSION['deco_message']);
+        }
+        session_destroy();
+        ?>
     <div class="container mt-5">
         <div class="row">
             <div class="col-lg-4">
