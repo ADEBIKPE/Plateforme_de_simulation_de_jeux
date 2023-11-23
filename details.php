@@ -47,6 +47,7 @@ else
                     while ($row = $result->fetch_assoc()) {
                         //$titre=$row['nom'];
                         $description=html_entity_decode($row['description']);
+                        
                         echo '<p style ="font-size:50px;font-weight:bold;">' . $row['nom'] . '</p>';
                         echo '<div class="row " id="detail">';
                         echo '<div class=" col-lg-1">';
