@@ -1,5 +1,8 @@
 <?php 
-require_once('roleMembre.php');
+session_start();
+if(!(isset($_SESSION['PROFILE']) ))
+  header("location:connexion.php");
+
 $titre="Détails des Jeux";
 include("header.inc.php");
 

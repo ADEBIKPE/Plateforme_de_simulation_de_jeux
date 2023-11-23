@@ -36,7 +36,7 @@ include 'menu_membre.php';
                     $chemin = $row['image'];
                     echo '<div class="col-lg-3 col-md-4 col-sm-12">';
                     echo '<div class="card">';
-                    echo '<img src="' . $row['image'] . '" style="height: 300px;"alt="Image du jeu" style="max-width: 100px; max-height: 100px;">';
+                    echo '<img src="' . $row['image'] . '" style="height: 300px;padding:25px;"alt="Image du jeu" style="max-width: 100px; max-height: 100px;">';
                     echo '<div class="card-body">';
                     echo '<h5 class="card-title">' . $row['nom'] . '</h5>';
                     echo '<div class="row">';

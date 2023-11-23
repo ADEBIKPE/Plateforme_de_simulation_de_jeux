@@ -6,9 +6,9 @@ $titre = "Liste Jeux";
 include 'header.inc.php';
 include 'menu_admin.php';
 ?>
-<div class="content">
+<div class="content" style="background-color:#333;color:white;padding:25px;">
     <div class="container">
-        <h1>Jeux</h1>
+        <h2 style="font-family: 'Bodoni MTsplay',serif; font-size: 40px; font-weight:bold; font-style:italic;">Jeux</h2>
         <div></br></div>
 
         <?php
@@ -36,7 +36,7 @@ include 'menu_admin.php';
                     $chemin = $row['image'];
                     echo '<div class="col-lg-3 col-md-4 col-sm-12">';
                     echo '<div class="card">';
-                    echo '<img src="' . $row['image'] . '" style="height: 300px;"alt="Image du jeu" style="max-width: 100px; max-height: 100px;">';
+                    echo '<img src="' . $row['image'] . '" style="height: 300px;padding:25px;"alt="Image du jeu" style="max-width: 100px; max-height: 100px;">';
                     echo '<div class="card-body">';
                     echo '<h5 class="card-title">' . $row['nom'] . '</h5>';
                     echo '<div class="row">';
