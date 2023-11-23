@@ -1,5 +1,5 @@
 <?php
-session_start(); // Pour les messages
+ // Pour les messages
 //Récupération et test du paramètre
 if (isset($_GET['role']) && ctype_digit($_GET['role']))
    {
@@ -8,8 +8,10 @@ if (isset($_GET['role']) && ctype_digit($_GET['role']))
 
    if($rol==1)
    {
-    require("admin.php");
+    require("role_admin.php");
    }
+   else
+    session_start();
 
 // Contenu du formulaire :
 $nom = htmlentities($_POST['nom']);
@@ -76,5 +78,5 @@ if ($stmt = $mysqli->prepare("SELECT idUser FROM user WHERE email = ?")) {
 if($role==2)
     header('Location: connexion.php');
 else
-    header('Location: inscription.php?role=1');
+    header('Location: listeMembres.php');
 ?>
