@@ -71,9 +71,11 @@ include 'menu_visiteur.php';
             </div>
         </div>
     </div>
+    
+    <div></br></br></br></div>
 
     <?php
-    //include 'footer.inc.php';
+    include 'footer.inc.php';
     ?>
 </body>
 </html>

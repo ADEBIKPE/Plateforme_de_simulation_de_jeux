@@ -1,6 +1,6 @@
 <?php
   $host="localhost";
-  $login="root";
-  $passwd="";
-  $dbname="monsite";
+  $login="grp_3_5";
+  $passwd="S5qoMDRWih5F";
+  $dbname="bdd_3_5"; 
 ?>

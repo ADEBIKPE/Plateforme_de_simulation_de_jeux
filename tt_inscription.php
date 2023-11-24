@@ -8,7 +8,7 @@ if (isset($_GET['role']) && ctype_digit($_GET['role']))
 
    if($rol==1)
    {
-    require("role_admin.php");
+    require("roleadmin.php");
    }
    else
     session_start();

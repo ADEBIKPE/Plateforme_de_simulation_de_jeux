@@ -31,37 +31,7 @@ include 'menu_membre.php';
 
 
 
-            if (isset($_SESSION['PROFILE']['role'])) {
-                $role = $_SESSION['PROFILE']['role'];
-
-
-                if ($role == 2) {
-                    if (isset($_SESSION['PROFILE']['idUser'])) {
-                        // Vous êtes membre, vous pouvez afficher le nom du membre ici
-                        $membreId = $_SESSION['PROFILE']['idUser'];
-
-                        require_once("param.inc.php");
-                        $mysqli = new mysqli($host, $login, $passwd, $dbname);
-                        if ($mysqli->connect_error) {
-                            die('Erreur de connexion (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
-                        }
-
-                        $query = "SELECT nom_de_avatar FROM user WHERE idUser = $membreId";
-                        $result = $mysqli->query($query);
-
-                        if ($result->num_rows > 0) {
-                            $membre = $result->fetch_assoc();
-                            echo '<span class="bold-text">BIENVENU(E) <span class="bold-text-small">' . $membre['nom_de_avatar'] . '</span></span>';
-                        } else {
-                            echo "Nom non trouvé pour cet utilisateur.";
-                        }
-                    } else {
-                        echo "ID du membre non défini dans la session.";
-                    }
-                }
-            } else {
-                echo "Rôle non défini pour cet utilisateur.";
-            }
+            
             ?>
         </div>
 
@@ -206,6 +176,26 @@ include 'menu_membre.php';
                 $stmtCheckInscription->execute();
                 $stmtCheckInscription->store_result();
     ?>
+
+                <!--Récupération des membres inscrits à la partie-->
+                <?php 
+                $stmtMembre=$mysqli->prepare("SELECT nom,prenom FROM user JOIN inscription ON inscription.idUser=user.idUser
+                WHERE inscription.idPartie=?");
+                $stmtMembre->bind_param("i",$idPartie);
+                $stmtMembre->execute();
+                $resultMembre=$stmtMembre->get_result();
+                $chaineMembre="";
+                if($resultMembre->num_rows>0){
+                    
+                    while($rowMembre=$resultMembre->fetch_assoc())
+                    $chaineMembre.=$rowMembre['nom'].' '.$rowMembre['prenom'].'\n';
+                }
+
+                $chaineMembre=rtrim($chaineMembre,'\n');
+                $stmtMembre->close();
+                ?>
+
+
                 <div class="card mb-4">
                     <div class="card-header">
                         <h5 class="card-title" style="font-weight:bold;font-style:italic;"><?php echo $row['nomJeu']; ?></h5>
@@ -214,7 +204,7 @@ include 'menu_membre.php';
                         <p class="card-text">Date: <?php echo $date; ?></p>
                         <p class="card-text">Heure: <?php echo $heure; ?></p>
                         <p class="card-text">Durée: <?php echo $row['duree']; ?></p>
-                        <p class="card-text">Nombre Inscrits: <?php echo $row['nombreInscrits']; ?></p>
+                        <a onclick="afficherMembres('<?php echo $chaineMembre ?>')" class="card-text">Membres Inscrits: <?php echo $row['nombreInscrits']; ?></a>
                         <?php
                         // Afficher le bouton Participer uniquement si l'utilisateur n'est pas déjà inscrit
                         if ($stmtCheckInscription->num_rows == 0) {
@@ -241,9 +231,17 @@ include 'menu_membre.php';
 
 
 </div>
+</div>
+</div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+<script>
+    function afficherMembres(membresString) {
+    // Utiliser la chaîne de caractères des membres passée depuis PHP
+    alert("Membres Inscrits:\n" + membresString);
+}
+</script>
 
 <?php
 include 'footer.inc.php';

@@ -45,6 +45,25 @@ include 'menu_admin.php';
 
            
 ?>
+
+            <!--Récupération des membres inscrits à la partie-->
+            <?php 
+                $stmtMembre=$mysqli->prepare("SELECT nom,prenom FROM user JOIN inscription ON inscription.idUser=user.idUser
+                WHERE inscription.idPartie=?");
+                $stmtMembre->bind_param("i",$idPartie);
+                $stmtMembre->execute();
+                $resultMembre=$stmtMembre->get_result();
+                $chaineMembre="";
+                if($resultMembre->num_rows>0){
+                    
+                    while($rowMembre=$resultMembre->fetch_assoc())
+                    $chaineMembre.=$rowMembre['nom'].' '.$rowMembre['prenom'].'\n';
+                }
+
+                $chaineMembre=rtrim($chaineMembre,'\n');
+                $stmtMembre->close();
+                ?>
+            
             <div class="card mb-4">
                 <div class="card-header">
                     <h5 class="card-title" style="font-weight:bold;font-style:italic;"><?php echo $row['nomJeu']; ?></h5>
@@ -53,7 +72,7 @@ include 'menu_admin.php';
                     <p class="card-text">Date: <?php echo $date; ?></p>
                     <p class="card-text">Heure: <?php echo $heure; ?></p>
                     <p class="card-text">Nombre nécessaire: <?php echo $row['nb_max_necessaire']; ?></p>
-                    <p class="card-text">Nombre Inscrits: <?php echo $row['nombreInscrits']; ?></p>
+                    <a onclick="afficherMembres('<?php echo $chaineMembre ?>')" class="card-text">Membres Inscrits: <?php echo $row['nombreInscrits']; ?></a>
                     <a href="delete_partie.php?id=<?php echo $row['idPartie']; ?>" class="btn btn-danger"><i class="fa-solid fa-delete-left"></i></a>
                 </div>
             </div>
@@ -72,3 +91,9 @@ include 'menu_admin.php';
 <?php
 include 'footer.inc.php';
 ?>
+<script>
+    function afficherMembres(membresString) {
+    // Utiliser la chaîne de caractères des membres passée depuis PHP
+    alert("Membres Inscrits:\n" + membresString);
+}
+</script>

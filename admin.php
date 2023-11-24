@@ -4,8 +4,18 @@ require_once("roleadmin.php");
 $titre = "Validation";
 include 'header.inc.php';
 include 'menu_admin.php';
+
 ?>
 <div class="content" style="background-color:#333;color:white;padding:25px;">
+    <?php
+    if (isset($_SESSION['message'])) {
+        echo '<div class="alert alert-primary alert-dismissible fade show" role="alert">';
+        echo $_SESSION['message'];
+        echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+        echo '</div>';
+        unset($_SESSION['message']);
+    } 
+    ?>
     <div class="container">
         <h2 style="font-family: 'Bodoni MTsplay',serif; font-size: 40px; font-weight:bold; font-style:italic;">Inscriptions en attente de validation</h2>
         <div></br></div>

@@ -33,13 +33,13 @@
                 //$_SESSION['message'] = "Authentification réussi pour un role inconnu.";
                 if($row["role"]==2){
                   
-                  $_SESSION['message'] = "Authentification réussi pour un membre.";
+                  $_SESSION['message'] = "Bienvenue ". $_SESSION['PROFILE']['nom_de_avatar'];
                  
                   header('Location: accueil.php');
                 }
                 else
                 {
-                $_SESSION['message'] = "Authentification réussi pour un admin.";
+                $_SESSION['message'] = "Bienvenue ". $_SESSION['PROFILE']['nom_de_avatar'];
 
                 header('Location: admin.php');
               }          

@@ -79,6 +79,23 @@ if (isset($_GET['id']) && ctype_digit($_GET['id'])) {
           <h2 class="card-title" style="font-family: 'Bodoni MTsplay',serif; font-size: 40px; font-weight:bold; font-style:italic;">Prochaines parties de ce jeu</h2>
           <div></br></div>
           <div class="row row-cols-1 row-cols-md-2 g-4">
+            <!--Récupération des membres inscrits à la partie-->
+            <?php 
+                $stmtMembre=$mysqli->prepare("SELECT nom,prenom FROM user JOIN inscription ON inscription.idUser=user.idUser
+                WHERE inscription.idPartie=?");
+                $stmtMembre->bind_param("i",$idPartie);
+                $stmtMembre->execute();
+                $resultMembre=$stmtMembre->get_result();
+                $chaineMembre="";
+                if($resultMembre->num_rows>0){
+                    
+                    while($rowMembre=$resultMembre->fetch_assoc())
+                    $chaineMembre.=$rowMembre['nom'].' '.$rowMembre['prenom'].'\n';
+                }
+
+                $chaineMembre=rtrim($chaineMembre,'\n');
+                $stmtMembre->close();
+                ?>
             <?php
             while ($row = $result->fetch_assoc()) {
               $date = $row['date_partie'];
@@ -90,8 +107,8 @@ if (isset($_GET['id']) && ctype_digit($_GET['id'])) {
                     <h5 class="card-title"><?php echo $date; ?></h5>
                     <p class="card-text"><?php echo $heure; ?></p>
                     <p class="card-text"><?php echo $row['duree']; ?></p>
-                    <p class="card-text">Nombre Inscrits: <?php echo $row['nombreInscrits']; ?></p>
-                    <a href="tt_inscriptionMembre.php?id=<?php echo $row['idPartie']; ?>" class="btn btn-success">S'inscrire</a>
+                    <div><a onclick="afficherMembres('<?php echo $chaineMembre ?>')" class="card-text">Membres Inscrits: <?php echo $row['nombreInscrits']; ?></a></br></br></div>
+                    <div class="row"><a href="tt_inscriptionMembre.php?id=<?php echo $row['idPartie']; ?>" class="btn btn-success card-text">S'inscrire</a></div>
                   </div>
                 </div>
               </div>
@@ -108,3 +125,10 @@ if (isset($_GET['id']) && ctype_digit($_GET['id'])) {
     </div>
   </div>
 </div>
+
+<script>
+    function afficherMembres(membresString) {
+    // Utiliser la chaîne de caractères des membres passée depuis PHP
+    alert("Membres Inscrits:\n" + membresString);
+}
+</script>
